@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loadEvents, saveEvents } from '../utils/storage';
+import { loadEvents } from '../utils/storage';
 import './EventsList.css';
+
 function EventsList() {
   const navigate = useNavigate();
   const [events] = useState(loadEvents());
