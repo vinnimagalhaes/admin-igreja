@@ -33,23 +33,40 @@ interface NewEventForm {
 
 function Events() {
   const navigate = useNavigate();
-  const [events, setEvents] = useState<Event[]>([]);
-  const [showNewEventForm, setShowNewEventForm] = useState(false);
-  const [newEvent, setNewEvent] = useState<NewEventForm>({
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const editEventId = queryParams.get('edit');
+  
+  const [events, setEvents] = useState(loadEvents());
+  const [currentEvent, setCurrentEvent] = useState({
+    id: Date.now(),
     name: '',
     date: '',
     description: '',
     location: '',
-    image: ''
+    image: '',
+    products: []
   });
-  const [newProduct, setNewProduct] = useState({
-    name: '',
-    price: '',
-    maxQuantity: '',
-    category: 'other' as Product['category'],
-    description: '',
-    image: ''
-  });
+
+  useEffect(() => {
+    if (editEventId) {
+      const eventToEdit = events.find(e => e.id === Number(editEventId));
+      if (eventToEdit) {
+        setCurrentEvent(eventToEdit);
+      }
+    } else {
+      // Se não estiver editando, cria um novo evento
+      setCurrentEvent({
+        id: Date.now(),
+        name: '',
+        date: '',
+        description: '',
+        location: '',
+        image: '',
+        products: []
+      });
+    }
+  }, [editEventId, events]);
 
   useEffect(() => {
     setEvents(loadEvents());
@@ -62,17 +79,31 @@ function Events() {
   const handleCreateEvent = (e: React.FormEvent) => {
     e.preventDefault();
     const event: Event = {
-      id: Date.now(),
-      name: newEvent.name,
-      date: newEvent.date,
-      description: newEvent.description,
-      location: newEvent.location,
-      image: newEvent.image,
-      products: []
+      id: currentEvent.id,
+      name: currentEvent.name,
+      date: currentEvent.date,
+      description: currentEvent.description,
+      location: currentEvent.location,
+      image: currentEvent.image,
+      products: currentEvent.products
     };
-    setEvents([...events, event]);
-    setNewEvent({ name: '', date: '', description: '', location: '', image: '' });
-    setShowNewEventForm(false);
+
+    if (editEventId) {
+      setEvents(events.map(e => e.id === Number(editEventId) ? event : e));
+    } else {
+      setEvents([...events, event]);
+    }
+
+    setCurrentEvent({
+      id: Date.now(),
+      name: '',
+      date: '',
+      description: '',
+      location: '',
+      image: '',
+      products: []
+    });
+    navigate('/events-list');
   };
 
   const handleAddProduct = (eventId: number) => {
@@ -124,7 +155,7 @@ function Events() {
     setEvents(events.filter(event => event.id !== eventId));
   };
 
-  const handleFinishEvent = () => {
+  const handleFinishEvent = (eventId: number) => {
     saveEvents(events);
     navigate('/events-list');
   };
@@ -148,8 +179,8 @@ function Events() {
               <label>Nome do Evento</label>
               <input
                 type="text"
-                value={newEvent.name}
-                onChange={(e) => setNewEvent({...newEvent, name: e.target.value})}
+                value={currentEvent.name}
+                onChange={(e) => setCurrentEvent({...currentEvent, name: e.target.value})}
                 required
               />
             </div>
@@ -158,8 +189,8 @@ function Events() {
               <label>Data</label>
               <input
                 type="date"
-                value={newEvent.date}
-                onChange={(e) => setNewEvent({...newEvent, date: e.target.value})}
+                value={currentEvent.date}
+                onChange={(e) => setCurrentEvent({...currentEvent, date: e.target.value})}
                 required
               />
             </div>
@@ -167,8 +198,8 @@ function Events() {
             <div className="form-group">
               <label>Descrição</label>
               <textarea
-                value={newEvent.description}
-                onChange={(e) => setNewEvent({...newEvent, description: e.target.value})}
+                value={currentEvent.description}
+                onChange={(e) => setCurrentEvent({...currentEvent, description: e.target.value})}
                 required
                 rows={4}
               />
@@ -178,8 +209,8 @@ function Events() {
               <label>Local</label>
               <input
                 type="text"
-                value={newEvent.location}
-                onChange={(e) => setNewEvent({...newEvent, location: e.target.value})}
+                value={currentEvent.location}
+                onChange={(e) => setCurrentEvent({...currentEvent, location: e.target.value})}
                 required
                 placeholder="Ex: Rua Example, 123"
               />
@@ -189,13 +220,13 @@ function Events() {
               <label>Imagem (URL)</label>
               <input
                 type="url"
-                value={newEvent.image}
-                onChange={(e) => setNewEvent({...newEvent, image: e.target.value})}
+                value={currentEvent.image}
+                onChange={(e) => setCurrentEvent({...currentEvent, image: e.target.value})}
                 placeholder="https://example.com/image.jpg"
               />
-              {newEvent.image && (
+              {currentEvent.image && (
                 <div className="image-preview">
-                  <img src={newEvent.image} alt="Preview" />
+                  <img src={currentEvent.image} alt="Preview" />
                 </div>
               )}
             </div>
@@ -204,172 +235,17 @@ function Events() {
               <button 
                 type="button" 
                 className="cancel-button"
-                onClick={() => setShowNewEventForm(false)}
+                onClick={() => navigate('/events-list')}
               >
                 Cancelar
               </button>
               <button type="submit" className="create-button">
-                Criar Evento
+                {editEventId ? 'Salvar Alterações' : 'Criar Evento'}
               </button>
             </div>
           </form>
         </div>
       )}
-
-      <div className="events-list">
-        {events.map(event => (
-          <div key={event.id} className="event-card">
-            <div className="event-header">
-              <h2>{event.name}</h2>
-              <button 
-                className="delete-event-button"
-                onClick={() => handleDeleteEvent(event.id)}
-              >
-                🗑️
-              </button>
-            </div>
-
-            <div className="event-info">
-              <p className="event-date">
-                <span className="icon">📅</span>
-                {new Date(event.date).toLocaleDateString()}
-              </p>
-              <p className="event-location">
-                <span className="icon">📍</span>
-                {event.location}
-              </p>
-            </div>
-
-            {event.image && (
-              <div className="event-image">
-                <img src={event.image} alt={event.name} />
-              </div>
-            )}
-
-            <div className="products-section">
-              <h3>
-                <span className="icon">🍽️</span>
-                Produtos
-              </h3>
-              <div className="add-product">
-                <input
-                  type="text"
-                  placeholder="Nome do produto"
-                  value={newProduct.name}
-                  onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
-                />
-                <input
-                  type="number"
-                  placeholder="Preço"
-                  value={newProduct.price}
-                  onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
-                />
-                <input
-                  type="number"
-                  placeholder="Quantidade disponível"
-                  value={newProduct.maxQuantity}
-                  onChange={(e) => setNewProduct({...newProduct, maxQuantity: e.target.value})}
-                  min="1"
-                />
-                <select
-                  value={newProduct.category}
-                  onChange={(e) => setNewProduct({
-                    ...newProduct, 
-                    category: e.target.value as Product['category']
-                  })}
-                >
-                  <option value="food">Comida</option>
-                  <option value="drink">Bebida</option>
-                  <option value="ticket">Ingresso</option>
-                  <option value="other">Outro</option>
-                </select>
-                <input
-                  type="text"
-                  placeholder="Descrição do produto"
-                  value={newProduct.description}
-                  onChange={(e) => setNewProduct({...newProduct, description: e.target.value})}
-                />
-                <input
-                  type="url"
-                  placeholder="URL da imagem"
-                  value={newProduct.image}
-                  onChange={(e) => setNewProduct({...newProduct, image: e.target.value})}
-                />
-                <button onClick={() => handleAddProduct(event.id)}>
-                  <span className="icon">➕</span>
-                  Adicionar
-                </button>
-              </div>
-
-              <div className="products-list">
-                {event.products.map(product => (
-                  <div key={product.id} className="product-card">
-                    {product.image && (
-                      <div className="product-image">
-                        <img src={product.image} alt={product.name} />
-                      </div>
-                    )}
-                    <div className="product-info">
-                      <div className="product-header">
-                        <span className="product-name">{product.name}</span>
-                        <span className={`product-category category-${product.category}`}>
-                          {product.category === 'food' && 'Comida'}
-                          {product.category === 'drink' && 'Bebida'}
-                          {product.category === 'ticket' && 'Ingresso'}
-                          {product.category === 'other' && 'Outro'}
-                        </span>
-                      </div>
-                      {product.description && (
-                        <p className="product-description">{product.description}</p>
-                      )}
-                      <div className="product-details">
-                        <span className="product-quantity">
-                          Disponível: {product.maxQuantity}
-                        </span>
-                        <span className="product-price">
-                          R$ {product.price.toFixed(2)}
-                        </span>
-                        <button 
-                          className="delete-product-button"
-                          onClick={() => handleDeleteProduct(event.id, product.id)}
-                        >
-                          🗑️
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                {event.products.length === 0 && (
-                  <div className="no-products">
-                    Nenhum produto adicionado
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="event-actions">
-              <button 
-                className="finish-event-button"
-                onClick={handleFinishEvent}
-              >
-                ✓ Finalizar Evento
-              </button>
-            </div>
-          </div>
-        ))}
-        {events.length === 0 && (
-          <div className="no-events">
-            <span className="icon">📅</span>
-            <p>Nenhum evento cadastrado</p>
-            <button 
-              className="new-event-button"
-              onClick={() => setShowNewEventForm(true)}
-            >
-              Criar Primeiro Evento
-            </button>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
