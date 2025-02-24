@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { loadEvents } from '../utils/storage';
+import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
 interface Product {
@@ -18,6 +19,7 @@ interface Event {
 
 function Dashboard() {
   const [events, setEvents] = useState<Event[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setEvents(loadEvents());
@@ -44,6 +46,20 @@ function Dashboard() {
     <div className="dashboard-container">
       <header className="dashboard-header">
         <h1>Dashboard</h1>
+        <div className="dashboard-actions">
+          <button 
+            className="action-button"
+            onClick={() => navigate('/events-list')}
+          >
+            🎫 Meus Eventos
+          </button>
+          <button 
+            className="action-button"
+            onClick={() => navigate('/events-user')}
+          >
+            🛒 Comprar Ingressos
+          </button>
+        </div>
       </header>
 
       <div className="dashboard-stats">

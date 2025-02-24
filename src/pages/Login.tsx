@@ -90,11 +90,20 @@ function Login() {
 
           <button 
             type="submit" 
-            className={`submit-button ${isLoading ? 'loading' : ''}`}
+            className="submit-button"
             disabled={isLoading}
           >
             {isLoading ? 'Entrando...' : 'Entrar'}
           </button>
+
+          <div className="forgot-password">
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              alert('Funcionalidade em desenvolvimento');
+            }}>
+              Esqueceu sua senha?
+            </a>
+          </div>
         </form>
       </div>
     </div>
