@@ -30,7 +30,7 @@ function Login() {
         <div className="login-options">
           <button 
             className="public-access-button"
-            onClick={() => navigate('/events')}
+            onClick={() => navigate('/events-user')}
           >
             🎫 Ver Eventos Disponíveis
           </button>

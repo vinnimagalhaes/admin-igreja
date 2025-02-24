@@ -16,7 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         {/* Rotas públicas para compradores */}
-        <Route path="/events" element={<EventsUser />} />
+        <Route path="/events-user" element={<EventsUser />} />
         <Route path="/event/:id" element={<EventDetails />} />
         
         {/* Rotas administrativas protegidas */}

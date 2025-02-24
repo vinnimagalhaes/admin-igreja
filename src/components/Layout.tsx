@@ -19,7 +19,7 @@ export function Layout({ children }: LayoutProps) {
       <aside className="sidebar">
         <div className="sidebar-header">
           <div className="logo">⚡️</div>
-          <h2>Admin Igreja</h2>
+          <h2>Paróquia N. Sra. Aparecida</h2>
         </div>
         
         <nav className="sidebar-nav">

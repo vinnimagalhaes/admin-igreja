@@ -13,7 +13,7 @@ function EventsList() {
         <h1>Lista de Eventos</h1>
         <button 
           className="action-button"
-          onClick={() => navigate('/events')}
+          onClick={() => navigate('/admin/events')}
         >
           + Novo Evento
         </button>
