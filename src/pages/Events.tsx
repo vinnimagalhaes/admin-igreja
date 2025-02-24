@@ -7,7 +7,6 @@ interface Product {
   id: number;
   name: string;
   price: number;
-  maxQuantity: number;
   category: 'food' | 'drink' | 'ticket' | 'other';
   description?: string;
   image?: string;
@@ -44,8 +43,9 @@ function Events() {
     id: Date.now(),
     name: '',
     price: 0,
-    maxQuantity: 0,
-    category: 'ticket'
+    category: 'ticket',
+    description: '',
+    image: ''
   });
 
   useEffect(() => {
@@ -74,22 +74,25 @@ function Events() {
     
     setEvents(updatedEvents);
     saveEvents(updatedEvents);
-    navigate('/events-list');
+    navigate('/admin/events-list');
   };
 
   const handleAddProduct = () => {
-    setCurrentEvent(prev => ({
-      ...prev,
-      products: [...prev.products, { ...newProduct, id: Date.now() }]
-    }));
-
-    setNewProduct({
-      id: Date.now(),
-      name: '',
-      price: 0,
-      maxQuantity: 0,
-      category: 'ticket'
-    });
+    if (newProduct.name && newProduct.price > 0) {
+      setCurrentEvent(prev => ({
+        ...prev,
+        products: [...prev.products, { ...newProduct, id: Date.now() }]
+      }));
+      
+      setNewProduct({
+        id: Date.now(),
+        name: '',
+        price: 0,
+        category: 'ticket',
+        description: '',
+        image: ''
+      });
+    }
   };
 
   const handleDeleteProduct = (productId: number) => {
@@ -99,20 +102,11 @@ function Events() {
     }));
   };
 
-  const handleDeleteEvent = () => {
-    const updatedEvents = events.filter(e => e.id !== Number(editEventId));
-    setEvents(updatedEvents);
-    saveEvents(updatedEvents);
-    navigate('/events-list');
-  };
-
   return (
     <div className="events-container">
-      <header className="events-header">
-        <h1>{editEventId ? 'Editar Evento' : 'Novo Evento'}</h1>
-      </header>
-
       <div className="event-form">
+        <h2>{editEventId ? 'Editar Evento' : 'Novo Evento'}</h2>
+
         <div className="form-group">
           <label>Nome do Evento</label>
           <input
@@ -149,7 +143,7 @@ function Events() {
         </div>
 
         <div className="form-group">
-          <label>URL da Imagem</label>
+          <label>URL da Imagem do Evento</label>
           <input
             type="text"
             value={currentEvent.image}
@@ -157,7 +151,7 @@ function Events() {
           />
         </div>
 
-        <h2>Produtos</h2>
+        <h3>Produtos</h3>
         {currentEvent.products.map(product => (
           <div key={product.id} className="product-item">
             <span>{product.name} - R$ {product.price}</span>
@@ -175,14 +169,8 @@ function Events() {
           <input
             type="number"
             placeholder="Preço"
-            value={newProduct.price}
+            value={newProduct.price || ''}
             onChange={e => setNewProduct({ ...newProduct, price: Number(e.target.value) })}
-          />
-          <input
-            type="number"
-            placeholder="Quantidade máxima"
-            value={newProduct.maxQuantity}
-            onChange={e => setNewProduct({ ...newProduct, maxQuantity: Number(e.target.value) })}
           />
           <select
             value={newProduct.category}
@@ -193,6 +181,17 @@ function Events() {
             <option value="drink">Bebida</option>
             <option value="other">Outro</option>
           </select>
+          <input
+            type="text"
+            placeholder="URL da Imagem do Produto"
+            value={newProduct.image}
+            onChange={e => setNewProduct({ ...newProduct, image: e.target.value })}
+          />
+          <textarea
+            placeholder="Descrição do produto"
+            value={newProduct.description}
+            onChange={e => setNewProduct({ ...newProduct, description: e.target.value })}
+          />
           <button onClick={handleAddProduct}>Adicionar Produto</button>
         </div>
 
@@ -200,11 +199,6 @@ function Events() {
           <button className="action-button" onClick={handleSaveEvent}>
             {editEventId ? 'Salvar Alterações' : 'Criar Evento'}
           </button>
-          {editEventId && (
-            <button className="delete-button" onClick={handleDeleteEvent}>
-              Excluir Evento
-            </button>
-          )}
         </div>
       </div>
     </div>
