@@ -10,9 +10,8 @@ export function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   const menuItems = [
-    { path: '/dashboard', label: '📊 Dashboard', icon: '🏠' },
-    { path: '/events-list', label: '📅 Meus Eventos', icon: '📋' },
-    { path: '/events-user', label: '🎫 Comprar Ingressos', icon: '🛒' },
+    { path: '/admin/dashboard', label: '📊 Dashboard', icon: '🏠' },
+    { path: '/admin/events-list', label: '📅 Meus Eventos', icon: '📋' },
   ];
 
   return (
