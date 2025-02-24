@@ -343,7 +343,6 @@ function EventsUser() {
                 <div className="pix-section">
                   <PixQRCode 
                     amount={calculateTotal()} 
-                    orderId={Date.now().toString()}
                   />
                 </div>
               )}

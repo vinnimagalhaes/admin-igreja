@@ -1,10 +1,10 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loadEvents } from '../utils/storage';
+import { loadEvents, saveEvents } from '../utils/storage';
 import './EventsList.css';
-
 function EventsList() {
   const navigate = useNavigate();
-  const [events, setEvents] = useState(loadEvents());
+  const [events] = useState(loadEvents());
 
   const handleEditEvent = (eventId: number) => {
     navigate(`/events?edit=${eventId}`);
