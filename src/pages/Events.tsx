@@ -7,6 +7,7 @@ interface Product {
   id: number;
   name: string;
   price: number;
+  maxQuantity: number;
   category: 'food' | 'drink' | 'ticket' | 'other';
   description?: string;
   image?: string;
@@ -43,6 +44,7 @@ function Events() {
     id: Date.now(),
     name: '',
     price: 0,
+    maxQuantity: 100,
     category: 'ticket',
     description: '',
     image: ''
@@ -81,13 +83,18 @@ function Events() {
     if (newProduct.name && newProduct.price > 0) {
       setCurrentEvent(prev => ({
         ...prev,
-        products: [...prev.products, { ...newProduct, id: Date.now() }]
+        products: [...prev.products, { 
+          ...newProduct, 
+          id: Date.now(),
+          maxQuantity: 100
+        }]
       }));
       
       setNewProduct({
         id: Date.now(),
         name: '',
         price: 0,
+        maxQuantity: 100,
         category: 'ticket',
         description: '',
         image: ''
