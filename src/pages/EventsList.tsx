@@ -7,16 +7,12 @@ function EventsList() {
   const navigate = useNavigate();
   const [events] = useState(loadEvents());
 
-  const handleEditEvent = (eventId: number) => {
-    navigate(`/events?edit=${eventId}`);
-  };
-
   return (
     <div className="events-list-container">
       <header className="events-list-header">
         <h1>Lista de Eventos</h1>
         <button 
-          className="new-event-button"
+          className="action-button"
           onClick={() => navigate('/events')}
         >
           + Novo Evento
@@ -25,28 +21,24 @@ function EventsList() {
 
       <div className="events-grid">
         {events.map(event => (
-          <div key={event.id} className="event-list-card">
-            {event.image && (
-              <div className="event-list-image">
-                <img src={event.image} alt={event.name} />
-              </div>
-            )}
-            
-            <div className="event-list-content">
-              <h2>{event.name}</h2>
-              <p className="event-list-date">
-                {new Date(event.date).toLocaleDateString()}
-              </p>
-              <p className="event-list-location">{event.location}</p>
-              <p className="event-list-products">
-                {event.products.length} produtos
-              </p>
+          <div key={event.id} className="event-card">
+            <div className="event-image">
+              {event.image && <img src={event.image} alt={event.name} />}
             </div>
-
-            <div className="event-list-actions">
+            
+            <div className="event-content">
+              <h2>{event.name}</h2>
+              <p className="event-date">
+                📅 {new Date(event.date).toLocaleDateString()}
+              </p>
+              <p className="event-location">📍 {event.location}</p>
+              <p className="event-products">
+                🎫 {event.products.length} produtos
+              </p>
+              
               <button 
-                className="edit-button"
-                onClick={() => handleEditEvent(event.id)}
+                className="action-button"
+                onClick={() => navigate(`/events?edit=${event.id}`)}
               >
                 ✏️ Editar
               </button>

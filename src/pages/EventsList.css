@@ -1,123 +1,114 @@
 .events-list-container {
-    padding: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .events-list-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-  }
-  
-  .events-list-header h1 {
-    color: #1f2937;
-    margin: 0;
-  }
-  
-  .new-event-button {
-    background-color: #22c55e;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s;
-  }
-  
-  .new-event-button:hover {
-    background-color: #16a34a;
-    transform: translateY(-2px);
-  }
-  
-  .events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-  }
-  
-  .event-list-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s;
-  }
-  
-  .event-list-card:hover {
-    transform: translateY(-4px);
-  }
-  
-  .event-list-image {
-    width: 100%;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .event-list-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .event-list-content {
-    padding: 20px;
-  }
-  
-  .event-list-content h2 {
-    margin: 0 0 12px 0;
-    font-size: 20px;
-    color: #1f2937;
-  }
-  
-  .event-list-date,
-  .event-list-location {
-    color: #6b7280;
-    margin: 8px 0;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .event-list-actions {
+  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.events-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.events-list-header h1 {
+  color: #1f2937;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.action-button {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.action-button:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.event-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+}
+
+.event-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-content {
+  padding: 24px;
+}
+
+.event-content h2 {
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.event-date,
+.event-location,
+.event-products {
+  color: #6b7280;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .events-list-container {
     padding: 16px;
-    border-top: 1px solid #e5e7eb;
-    display: flex;
-    justify-content: flex-end;
   }
-  
-  .edit-button {
-    background-color: #22c55e;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
+
+  .events-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .edit-button:hover {
-    background-color: #16a34a;
+
+  .events-list-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+    text-align: center;
   }
-  
-  @media (max-width: 768px) {
-    .events-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .events-list-header {
-      flex-direction: column;
-      gap: 16px;
-      align-items: stretch;
-    }
-  }
+}
