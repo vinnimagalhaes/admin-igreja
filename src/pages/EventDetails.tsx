@@ -58,15 +58,17 @@ function EventDetails() {
   return (
     <div className="event-details-container">
       <div className="event-details-content">
-        <div className="event-banner">
-          <img src={event.image} alt={event.name} />
-        </div>
+        <div className="event-info-section">
+          <div className="event-banner">
+            <img src={event.image} alt={event.name} />
+          </div>
 
-        <div className="event-info">
-          <h1>{event.name}</h1>
-          <p className="event-date">📅 {new Date(event.date).toLocaleDateString()}</p>
-          <p className="event-location">📍 {event.location}</p>
-          <p className="event-description">{event.description}</p>
+          <div className="event-info">
+            <h1>{event.name}</h1>
+            <p className="event-date">📅 {new Date(event.date).toLocaleDateString()}</p>
+            <p className="event-location">📍 {event.location}</p>
+            <p className="event-description">{event.description}</p>
+          </div>
         </div>
 
         <div className="products-section">
@@ -74,40 +76,50 @@ function EventDetails() {
           <div className="products-grid">
             {event.products.map(product => (
               <div key={product.id} className="product-card">
-                <h3>{product.name}</h3>
-                <p className="product-price">R$ {product.price.toFixed(2)}</p>
-                <div className="quantity-controls">
-                  <button 
-                    className="quantity-button"
-                    onClick={() => handleQuantityChange(product.id, (selectedProducts[product.id] || 0) - 1)}
-                  >
-                    -
-                  </button>
-                  <span>{selectedProducts[product.id] || 0}</span>
-                  <button 
-                    className="quantity-button"
-                    onClick={() => handleQuantityChange(product.id, (selectedProducts[product.id] || 0) + 1)}
-                    disabled={(selectedProducts[product.id] || 0) >= product.maxQuantity}
-                  >
-                    +
-                  </button>
+                {product.image && (
+                  <div className="product-image">
+                    <img src={product.image} alt={product.name} />
+                  </div>
+                )}
+                <div className="product-info">
+                  <h3>{product.name}</h3>
+                  <p className="product-price">R$ {product.price.toFixed(2)}</p>
+                  {product.description && (
+                    <p className="product-description">{product.description}</p>
+                  )}
+                  <div className="quantity-controls">
+                    <button 
+                      className="quantity-button"
+                      onClick={() => handleQuantityChange(product.id, (selectedProducts[product.id] || 0) - 1)}
+                    >
+                      -
+                    </button>
+                    <span>{selectedProducts[product.id] || 0}</span>
+                    <button 
+                      className="quantity-button"
+                      onClick={() => handleQuantityChange(product.id, (selectedProducts[product.id] || 0) + 1)}
+                      disabled={(selectedProducts[product.id] || 0) >= product.maxQuantity}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
-        {calculateTotal() > 0 && (
-          <div className="checkout-section">
-            <div className="total">
-              <h3>Total: R$ {calculateTotal().toFixed(2)}</h3>
-            </div>
-            <button className="checkout-button">
-              Finalizar Compra
-            </button>
-          </div>
-        )}
       </div>
+
+      {calculateTotal() > 0 && (
+        <div className="checkout-section">
+          <div className="total">
+            <h3>Total: R$ {calculateTotal().toFixed(2)}</h3>
+          </div>
+          <button className="checkout-button">
+            Finalizar Compra
+          </button>
+        </div>
+      )}
     </div>
   );
 }

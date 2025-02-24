@@ -9,6 +9,13 @@
   align-items: center;
 }
 
+.events-user-container h1 {
+  color: #1f2937;
+  margin-bottom: 32px;
+  font-size: 28px;
+  text-align: center;
+}
+
 .events-user-header {
   width: 100%;
   max-width: 1000px;
@@ -30,10 +37,8 @@
 }
 
 .events-grid {
-  width: 100%;
-  max-width: 1000px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 24px;
 }
 
@@ -43,6 +48,7 @@
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
+  display: flex;
 }
 
 .event-card:hover {
@@ -50,9 +56,9 @@
 }
 
 .event-image {
-  width: 100%;
+  width: 300px;
   height: 200px;
-  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .event-image img {
@@ -62,13 +68,16 @@
 }
 
 .event-info {
-  padding: 20px;
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .event-info h2 {
-  margin: 0 0 12px 0;
+  margin: 0 0 16px 0;
   color: #1f2937;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .event-date,
@@ -78,23 +87,20 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .event-description {
   color: #4b5563;
   margin: 16px 0;
-  font-size: 14px;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+  flex-grow: 1;
 }
 
 .view-event-button {
-  width: 100%;
-  padding: 12px;
+  align-self: flex-start;
+  padding: 12px 24px;
   background-color: #22c55e;
   color: white;
   border: none;
@@ -135,8 +141,16 @@
     padding: 16px;
   }
 
-  .events-grid {
-    grid-template-columns: 1fr;
+  .event-card {
+    flex-direction: column;
+  }
+
+  .event-image {
+    width: 100%;
+  }
+
+  .view-event-button {
+    width: 100%;
   }
 }
 
