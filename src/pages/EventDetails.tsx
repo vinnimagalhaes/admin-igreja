@@ -28,6 +28,7 @@ function EventDetails() {
   const { id } = useParams();
   const [event, setEvent] = useState<Event | null>(null);
   const [selectedProducts, setSelectedProducts] = useState<{[key: number]: number}>({});
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   useEffect(() => {
     const events = loadEvents();
@@ -63,7 +64,6 @@ function EventDetails() {
           <div className="event-banner">
             <img src={event.image} alt={event.name} />
           </div>
-
           <div className="event-info">
             <h1>{event.name}</h1>
             <p className="event-date">📅 {new Date(event.date).toLocaleDateString()}</p>
@@ -116,9 +116,45 @@ function EventDetails() {
           <div className="total">
             <h3>Total: R$ {calculateTotal().toFixed(2)}</h3>
           </div>
-          <button className="checkout-button">
+          <button 
+            className="checkout-button"
+            onClick={() => setShowPaymentModal(true)}
+          >
             Finalizar Compra
           </button>
+        </div>
+      )}
+
+      {showPaymentModal && (
+        <div className="modal-overlay">
+          <div className="checkout-modal">
+            <h2>Finalizar Compra</h2>
+            <div className="form-group">
+              <label>Forma de Pagamento</label>
+              <select>
+                <option value="pix">PIX</option>
+                <option value="credit">Cartão de Crédito</option>
+                <option value="debit">Cartão de Débito</option>
+              </select>
+            </div>
+            <div className="checkout-buttons">
+              <button 
+                className="cancel-button"
+                onClick={() => setShowPaymentModal(false)}
+              >
+                Cancelar
+              </button>
+              <button 
+                className="confirm-button"
+                onClick={() => {
+                  alert('Compra realizada com sucesso!');
+                  setShowPaymentModal(false);
+                }}
+              >
+                Confirmar Pagamento
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

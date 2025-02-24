@@ -18,13 +18,22 @@ export interface Event {
   products: Product[];
 }
 
-const EVENTS_KEY = 'church_admin_events';
+const EVENTS_KEY = 'events';
 
-export const saveEvents = (events: Event[]) => {
-  localStorage.setItem(EVENTS_KEY, JSON.stringify(events));
+export const saveEvents = (events: any[]) => {
+  try {
+    localStorage.setItem(EVENTS_KEY, JSON.stringify(events));
+  } catch (error) {
+    console.error('Erro ao salvar eventos:', error);
+  }
 };
 
-export const loadEvents = (): Event[] => {
-  const events = localStorage.getItem(EVENTS_KEY);
-  return events ? JSON.parse(events) : [];
+export const loadEvents = () => {
+  try {
+    const events = localStorage.getItem(EVENTS_KEY);
+    return events ? JSON.parse(events) : [];
+  } catch (error) {
+    console.error('Erro ao carregar eventos:', error);
+    return [];
+  }
 };
