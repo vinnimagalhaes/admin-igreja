@@ -11,8 +11,8 @@ function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Aqui você pode adicionar sua lógica de autenticação
-    if (email === 'admin@admin.com' && password === 'admin') {
+    // Credenciais originais
+    if (email === 'vinicius@gmail.com' && password === '123') {
       navigate('/admin/dashboard');
     } else {
       setError('Email ou senha inválidos');
@@ -24,7 +24,7 @@ function Login() {
       <div className="login-box">
         <div className="logo-container">
           <div className="logo">⚡️</div>
-          <h1>Admin Igreja</h1>
+          <h1>Paróquia N. Sra. Aparecida</h1>
         </div>
 
         <div className="login-options">
