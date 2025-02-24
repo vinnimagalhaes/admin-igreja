@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loadEvents, saveEvents } from '../utils/storage';
+import { loadEvents } from '../utils/storage';
 import './EventsList.css';
 
 function EventsList() {

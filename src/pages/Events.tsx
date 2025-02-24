@@ -124,7 +124,7 @@ function Events() {
     setEvents(events.filter(event => event.id !== eventId));
   };
 
-  const handleFinishEvent = (eventId: number) => {
+  const handleFinishEvent = () => {
     saveEvents(events);
     navigate('/events-list');
   };
@@ -350,7 +350,7 @@ function Events() {
             <div className="event-actions">
               <button 
                 className="finish-event-button"
-                onClick={() => handleFinishEvent(event.id)}
+                onClick={handleFinishEvent}
               >
                 ✓ Finalizar Evento
               </button>

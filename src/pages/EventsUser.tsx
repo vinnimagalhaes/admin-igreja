@@ -266,7 +266,6 @@ function EventsUser() {
                     paymentMethod: e.target.value as OrderDetails['paymentMethod']
                   })}
                 >
-                  <option value="" disabled selected>Clique para selecionar a forma de pagamento</option>
                   <option value="credit">Cartão de Crédito</option>
                   <option value="pix">PIX</option>
                   <option value="cash">Dinheiro</option>
