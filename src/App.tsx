@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/Login.tsx';
-import Dashboard from './pages/Dashboard.tsx';
-import Events from './pages/Events.tsx';  // Adicione esta linha
-import EventsUser from './pages/EventsUser.tsx';
+import { Layout } from './components/Layout';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Events from './pages/Events';
+import EventsUser from './pages/EventsUser';
 import EventsList from './pages/EventsList';
 
 function App() {
@@ -10,11 +11,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/events-user" element={<EventsUser />} />
-        <Route path="/events-list" element={<EventsList />} />
+        
+        {/* Rotas protegidas com Layout */}
+        <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+        <Route path="/events" element={<Layout><Events /></Layout>} />
+        <Route path="/events-user" element={<Layout><EventsUser /></Layout>} />
+        <Route path="/events-list" element={<Layout><EventsList /></Layout>} />
       </Routes>
     </BrowserRouter>
   );
