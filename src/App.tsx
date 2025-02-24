@@ -11,8 +11,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rota inicial agora vai para a página de eventos */}
-        <Route path="/" element={<Navigate to="/events-user" replace />} />
+        {/* Rota inicial vai para a página de login que tem as duas opções */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
 
         {/* Rotas públicas */}
