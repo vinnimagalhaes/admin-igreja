@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { loadEvents } from '../utils/storage';
-import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
 import '../styles/shared.css';
+import './Dashboard.css';
 
 interface Product {
   id: number;
@@ -15,12 +14,14 @@ interface Event {
   id: number;
   name: string;
   date: string;
+  description: string;
+  location: string;
+  image: string;
   products: Product[];
 }
 
 function Dashboard() {
   const [events, setEvents] = useState<Event[]>([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     setEvents(loadEvents());
@@ -47,20 +48,6 @@ function Dashboard() {
     <div className="dashboard-container">
       <header className="dashboard-header">
         <h1>Dashboard</h1>
-        <div className="dashboard-actions">
-          <button 
-            className="action-button"
-            onClick={() => navigate('/events-list')}
-          >
-            🎫 Meus Eventos
-          </button>
-          <button 
-            className="action-button"
-            onClick={() => navigate('/events-user')}
-          >
-            🛒 Comprar Ingressos
-          </button>
-        </div>
       </header>
 
       <div className="dashboard-stats">
@@ -94,24 +81,26 @@ function Dashboard() {
         <div className="events-grid">
           {getUpcomingEvents().map(event => (
             <div key={event.id} className="event-card">
-              <div className="event-header">
-                <h3>{event.name}</h3>
-                <span className="event-date">
-                  {new Date(event.date).toLocaleDateString()}
-                </span>
+              <div className="event-image">
+                <img src={event.image || '/placeholder-event.jpg'} alt={event.name} />
               </div>
-              <div className="event-stats">
-                <div className="event-stat">
-                  <span>Produtos:</span>
-                  <span>{event.products.length}</span>
-                </div>
-                <div className="event-stat">
-                  <span>Valor Total:</span>
-                  <span>
-                    R$ {event.products.reduce((total, product) => 
-                      total + (product.price * product.maxQuantity), 0
-                    ).toFixed(2)}
-                  </span>
+              <div className="event-info">
+                <h3>{event.name}</h3>
+                <p className="event-date">📅 {new Date(event.date).toLocaleDateString()}</p>
+                <p className="event-location">📍 {event.location}</p>
+                <div className="event-stats">
+                  <div className="event-stat">
+                    <span>Produtos:</span>
+                    <span>{event.products.length}</span>
+                  </div>
+                  <div className="event-stat">
+                    <span>Valor Total:</span>
+                    <span>
+                      R$ {event.products.reduce((total, product) => 
+                        total + (product.price * product.maxQuantity), 0
+                      ).toFixed(2)}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
