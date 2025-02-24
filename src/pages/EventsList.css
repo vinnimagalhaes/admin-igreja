@@ -11,6 +11,31 @@
     margin-bottom: 32px;
   }
   
+  .events-list-header h1 {
+    color: #1f2937;
+    margin: 0;
+  }
+  
+  .new-event-button {
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+  
+  .new-event-button:hover {
+    background-color: #16a34a;
+    transform: translateY(-2px);
+  }
+  
   .events-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -19,14 +44,20 @@
   
   .event-list-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    transition: transform 0.2s;
+  }
+  
+  .event-list-card:hover {
+    transform: translateY(-4px);
   }
   
   .event-list-image {
     width: 100%;
     height: 200px;
+    position: relative;
     overflow: hidden;
   }
   
@@ -37,20 +68,23 @@
   }
   
   .event-list-content {
-    padding: 16px;
+    padding: 20px;
   }
   
   .event-list-content h2 {
-    margin: 0 0 8px 0;
-    font-size: 18px;
+    margin: 0 0 12px 0;
+    font-size: 20px;
+    color: #1f2937;
   }
   
   .event-list-date,
-  .event-list-location,
-  .event-list-products {
+  .event-list-location {
     color: #6b7280;
-    margin: 4px 0;
+    margin: 8px 0;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
   
   .event-list-actions {
@@ -61,15 +95,29 @@
   }
   
   .edit-button {
-    background: #3b82f6;
+    background-color: #22c55e;
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    font-weight: 500;
+    transition: all 0.2s;
   }
   
   .edit-button:hover {
-    background: #2563eb;
+    background-color: #16a34a;
+  }
+  
+  @media (max-width: 768px) {
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .events-list-header {
+      flex-direction: column;
+      gap: 16px;
+      align-items: stretch;
+    }
   }
