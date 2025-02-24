@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loadEvents } from '../utils/storage';
+import '../styles/shared.css';
 import './EventsUser.css';
 
 interface Product {
@@ -29,7 +30,15 @@ function EventsUser() {
 
   return (
     <div className="events-user-container">
-      <h1>Eventos Disponíveis</h1>
+      <header className="events-list-header">
+        <h1>Eventos Disponíveis</h1>
+        <button 
+          className="action-button"
+          onClick={() => navigate('/')}
+        >
+          🏠 Voltar para Home
+        </button>
+      </header>
       
       <div className="events-grid">
         {events.length > 0 ? (
@@ -44,10 +53,10 @@ function EventsUser() {
                 <p className="event-location">📍 {event.location}</p>
                 <p className="event-description">{event.description}</p>
                 <button 
-                  className="view-event-button"
+                  className="view-button"
                   onClick={() => navigate(`/event/${event.id}`)}
                 >
-                  Ver Evento
+                  👁️ Ver Evento
                 </button>
               </div>
             </div>

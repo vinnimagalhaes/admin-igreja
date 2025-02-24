@@ -199,13 +199,21 @@
     height: 200px;
   }
 
-  .checkout-section {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
+  .products-grid {
+    grid-template-columns: 1fr;
   }
 
-  .checkout-button {
-    width: 100%;
+  .product-card {
+    flex-direction: column;
+  }
+
+  .checkout-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   }
 }

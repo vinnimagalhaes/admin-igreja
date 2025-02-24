@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { loadEvents } from '../utils/storage';
+import '../styles/shared.css';
 import './EventDetails.css';
 
 interface Product {

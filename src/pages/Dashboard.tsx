@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { loadEvents } from '../utils/storage';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
+import '../styles/shared.css';
 
 interface Product {
   id: number;

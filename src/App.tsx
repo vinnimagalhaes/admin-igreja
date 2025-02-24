@@ -11,15 +11,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rota inicial redireciona para login */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Rota inicial agora vai para a página de eventos */}
+        <Route path="/" element={<Navigate to="/events-user" replace />} />
         <Route path="/login" element={<Login />} />
 
-        {/* Rotas públicas para compradores */}
+        {/* Rotas públicas */}
         <Route path="/events-user" element={<EventsUser />} />
         <Route path="/event/:id" element={<EventDetails />} />
         
-        {/* Rotas administrativas protegidas */}
+        {/* Rotas administrativas */}
+        <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
         <Route path="/admin/dashboard" element={<Layout><Dashboard /></Layout>} />
         <Route path="/admin/events" element={<Layout><Events /></Layout>} />
         <Route path="/admin/events-list" element={<Layout><EventsList /></Layout>} />
