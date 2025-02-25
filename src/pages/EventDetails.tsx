@@ -29,10 +29,11 @@ function EventDetails() {
   const [event, setEvent] = useState<Event | null>(null);
   const [selectedProducts, setSelectedProducts] = useState<{[key: number]: number}>({});
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<string>('pix');
 
   useEffect(() => {
     const events = loadEvents();
-    const currentEvent = events.find(e => e.id === Number(id));
+    const currentEvent = events.find((e: Event) => e.id === Number(id));
     if (currentEvent) {
       setEvent(currentEvent);
     }
@@ -131,7 +132,7 @@ function EventDetails() {
             <h2>Finalizar Compra</h2>
             <div className="form-group">
               <label>Forma de Pagamento</label>
-              <select>
+              <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
                 <option value="pix">PIX</option>
                 <option value="credit">Cartão de Crédito</option>
                 <option value="debit">Cartão de Débito</option>
