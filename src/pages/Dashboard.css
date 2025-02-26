@@ -21,13 +21,29 @@
 }
 
 .stat-card {
-  background-color: white;
-  border-radius: 8px;
+  background-color: #1e1e1e;
+  border-radius: var(--border-radius);
   padding: 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+.stat-card h3 {
+  color: #dddddd;
+  font-size: 1.25rem;
+  margin: 0 0 16px 0;
+}
+
+.stat-card .value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 16px 0;
+}
+
+.stat-card p {
+  color: #94a3b8;
+  margin: 0;
 }
 
 .stat-icon {

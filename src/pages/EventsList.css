@@ -52,14 +52,41 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
+  background-color: transparent;
 }
 
 .event-card {
-  background: white;
-  border-radius: 12px;
+  background-color: #1e1e1e;
+  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+.event-card-content {
+  padding: 16px;
+}
+
+.event-card-content h3 {
+  color: #dddddd;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.event-card-content p {
+  color: #94a3b8;
+  margin: 8px 0;
+}
+
+.event-card-footer {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.event-card-footer span {
+  color: #94a3b8;
+  font-size: 0.875rem;
 }
 
 .event-image {
