@@ -7,6 +7,7 @@ import EventsUser from './pages/EventsUser';
 import EventsList from './pages/EventsList';
 import EventDetails from './pages/EventDetails';
 import Raffles from './pages/Raffles';
+import RaffleManagement from './pages/RaffleManagement';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/admin/events" element={<Layout><Events /></Layout>} />
         <Route path="/admin/events-list" element={<Layout><EventsList /></Layout>} />
         <Route path="/admin/raffles" element={<Layout><Raffles /></Layout>} />
+        <Route path="/admin/raffles/:id" element={<Layout><RaffleManagement /></Layout>} />
       </Routes>
     </BrowserRouter>
   );
