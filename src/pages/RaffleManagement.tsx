@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/shared.css';
 import './RaffleManagement.css';
@@ -23,7 +23,7 @@ interface Raffle {
   prizeImage: string;
 }
 
-export default function RaffleManagement(): JSX.Element {
+export default function RaffleManagement(): React.ReactElement {
   const { id } = useParams<{ id: string }>();
   const [raffle, setRaffle] = useState<Raffle | null>(null);
   const [selectedNumber, setSelectedNumber] = useState<RaffleNumber | null>(null);
