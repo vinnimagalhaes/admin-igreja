@@ -4,15 +4,16 @@
   align-items: center;
   justify-content: center;
   background-color: var(--bg-primary);
+  padding: 16px;
 }
 
 .login-card {
-  background-color: var(--card-bg);
+  background-color: var(--bg-elevated);
   padding: 32px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px var(--shadow-color);
+  border-radius: var(--border-radius);
   width: 100%;
   max-width: 400px;
+  box-shadow: var(--shadow-lg);
 }
 
 .login-header {
@@ -112,13 +113,14 @@ form h2 {
 
 .login-button {
   width: 100%;
-  padding: 12px;
+  padding: 18px;
   background-color: var(--accent-color);
   color: white;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-menu);
   font-weight: 600;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 

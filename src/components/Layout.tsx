@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { FaChurch } from 'react-icons/fa';
 import { ThemeSwitch } from './ThemeSwitch';
 import './Layout.css';
 
@@ -7,6 +9,7 @@ interface LayoutProps {
 }
 
 export function Layout({ children }: LayoutProps) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -16,11 +19,19 @@ export function Layout({ children }: LayoutProps) {
     { path: '/admin/raffles', label: 'Rifas', icon: '🎫' }
   ];
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <div className="layout">
-      <aside className="sidebar">
+      <button className="menu-toggle" onClick={toggleSidebar}>
+        ☰
+      </button>
+      
+      <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
-          <div className="logo">⚡️</div>
+          <FaChurch size={24} color="#22c55e" />
           <h2>Paróquia N. Sra. Aparecida</h2>
         </div>
         
@@ -41,7 +52,7 @@ export function Layout({ children }: LayoutProps) {
         </div>
       </aside>
 
-      <main className="main-content">
+      <main className="main-content" onClick={() => isSidebarOpen && setIsSidebarOpen(false)}>
         {children}
       </main>
     </div>
