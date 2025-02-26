@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { QRCodeSVG } from 'qrcode.react'; // Corrigindo a importação
 import './RaffleCheckout.css';
-import QRCode from 'qrcode.react'; // Precisamos instalar esta dependência: npm install qrcode.react
 
 interface Raffle {
   id: string;
@@ -136,7 +136,7 @@ export default function RaffleCheckout() {
             </p>
             
             <div className="qr-code-container">
-              <QRCode value={pixCode} size={200} />
+              <QRCodeSVG value={pixCode} size={200} />
             </div>
             
             <div className="pix-copy">
