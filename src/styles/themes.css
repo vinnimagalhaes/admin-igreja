@@ -1,26 +1,30 @@
 :root {
   /* Cores principais */
   --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
+  --bg-secondary: #1e1e1e;
+  --bg-elevated: #ffffff;
   --text-primary: #1e293b;
   --text-secondary: #64748b;
   
   /* Elementos de UI */
   --card-bg: #ffffff;
-  --sidebar-bg: #ffffff;
+  --sidebar-bg: #1e1e1e;
   --input-bg: #ffffff;
   --modal-bg: #ffffff;
   
-  /* Bordas e Divisores */
-  --border-color: #e2e8f0;
-  --border-hover: #cbd5e1;
-  
   /* Cores de Ação */
-  --accent-color: #22c55e;
-  --accent-hover: #16a34a;
+  --accent-color: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-light: rgba(79, 70, 229, 0.1);
+  
+  /* Status */
   --error-color: #ef4444;
   --warning-color: #f59e0b;
   --success-color: #22c55e;
+  
+  /* Bordas */
+  --border-color: #e2e8f0;
+  --border-dark: #2d2d2d;
   
   /* Sombras */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -46,20 +50,26 @@
 
 [data-theme='dark'] {
   /* Cores principais */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-elevated: #242424;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   
   /* Elementos de UI */
-  --card-bg: #1e293b;
-  --sidebar-bg: #1e293b;
-  --input-bg: #334155;
-  --modal-bg: #1e293b;
+  --card-bg: #242424;
+  --sidebar-bg: #1a1a1a;
+  --input-bg: #2d2d2d;
+  --modal-bg: #242424;
   
-  /* Bordas e Divisores */
-  --border-color: #334155;
-  --border-hover: #475569;
+  /* Bordas */
+  --border-color: #2d2d2d;
+  --border-dark: #404040;
+  
+  /* Cores de Ação */
+  --accent-color: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-light: rgba(79, 70, 229, 0.2);
   
   /* Sombras (mais sutis no modo escuro) */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
