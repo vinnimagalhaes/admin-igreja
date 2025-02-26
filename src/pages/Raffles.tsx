@@ -1,14 +1,7 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/shared.css';
 import './Raffles.css';
-
-interface RaffleNumber {
-  number: string;
-  status: 'available' | 'reserved' | 'sold';
-  buyerName?: string;
-  buyerPhone?: string;
-}
 
 interface Raffle {
   id: number;
@@ -17,12 +10,12 @@ interface Raffle {
   price: number;
   image: string;
   drawDate: string;
-  numbers: RaffleNumber[];
+  numbers: any[];
   prizeDescription: string;
   prizeImage: string;
 }
 
-function Raffles() {
+export default function Raffles(): React.ReactElement {
   const navigate = useNavigate();
   const [raffles, setRaffles] = useState<Raffle[]>([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -38,31 +31,30 @@ function Raffles() {
     prizeImage: ''
   });
 
+  useEffect(() => {
+    const savedRaffles = localStorage.getItem('raffles');
+    if (savedRaffles) {
+      setRaffles(JSON.parse(savedRaffles));
+    }
+  }, []);
+
   const handleCreateRaffle = () => {
     // Gerar números da rifa (por exemplo, de 0000 a 9999)
-    const numbers: RaffleNumber[] = Array.from({ length: 10000 }, (_, i) => ({
+    const numbers = Array.from({ length: 10000 }, (_, i) => ({
       number: i.toString().padStart(4, '0'),
       status: 'available'
     }));
 
     const raffle = {
       ...newRaffle,
+      id: Date.now(),
       numbers
     };
 
-    setRaffles([...raffles, raffle]);
+    const updatedRaffles = [...raffles, raffle];
+    setRaffles(updatedRaffles);
+    localStorage.setItem('raffles', JSON.stringify(updatedRaffles));
     setShowCreateModal(false);
-    setNewRaffle({
-      id: Date.now(),
-      title: '',
-      description: '',
-      price: 0,
-      image: '',
-      drawDate: '',
-      numbers: [],
-      prizeDescription: '',
-      prizeImage: ''
-    });
   };
 
   return (
@@ -79,35 +71,41 @@ function Raffles() {
 
       <div className="raffles-grid">
         {raffles.map(raffle => (
-          <div key={raffle.id} className="raffle-card">
+          <div 
+            key={raffle.id} 
+            className="raffle-card"
+            onClick={() => navigate(`/admin/raffles/${raffle.id}`)}
+          >
             <div className="raffle-image">
-              <img src={raffle.image} alt={raffle.title} />
+              <img src={raffle.image || 'https://via.placeholder.com/300'} alt={raffle.title} />
             </div>
             <div className="raffle-info">
               <h2>{raffle.title}</h2>
               <p className="raffle-description">{raffle.description}</p>
-              <p className="raffle-price">Valor do número: R$ {raffle.price.toFixed(2)}</p>
-              <p className="raffle-date">Sorteio: {new Date(raffle.drawDate).toLocaleDateString()}</p>
+              <p className="raffle-price">Valor: R$ {raffle.price.toFixed(2)}</p>
+              <p className="raffle-date">
+                Data do Sorteio: {new Date(raffle.drawDate).toLocaleDateString()}
+              </p>
               <div className="raffle-stats">
                 <div className="stat">
-                  <span>Disponíveis:</span>
-                  <span>{raffle.numbers.filter(n => n.status === 'available').length}</span>
+                  <span>Disponíveis</span>
+                  <span>
+                    {raffle.numbers.filter(n => n.status === 'available').length}
+                  </span>
                 </div>
                 <div className="stat">
-                  <span>Reservados:</span>
-                  <span>{raffle.numbers.filter(n => n.status === 'reserved').length}</span>
+                  <span>Reservados</span>
+                  <span>
+                    {raffle.numbers.filter(n => n.status === 'reserved').length}
+                  </span>
                 </div>
                 <div className="stat">
-                  <span>Vendidos:</span>
-                  <span>{raffle.numbers.filter(n => n.status === 'sold').length}</span>
+                  <span>Vendidos</span>
+                  <span>
+                    {raffle.numbers.filter(n => n.status === 'sold').length}
+                  </span>
                 </div>
               </div>
-              <button 
-                className="view-button"
-                onClick={() => navigate(`/admin/raffles/${raffle.id}`)}
-              >
-                Gerenciar Rifa
-              </button>
             </div>
           </div>
         ))}
@@ -193,5 +191,3 @@ function Raffles() {
     </div>
   );
 }
-
-export default Raffles;

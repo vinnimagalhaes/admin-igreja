@@ -14,15 +14,15 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Rota inicial vai para a página de login que tem as duas opções */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
 
         {/* Rotas públicas */}
         <Route path="/events-user" element={<EventsUser />} />
-        <Route path="/event/:id" element={<EventDetails />} />
+        <Route path="/events-user/:id" element={<EventDetails />} />
         
         {/* Rotas administrativas */}
-        <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
         <Route path="/admin/dashboard" element={<Layout><Dashboard /></Layout>} />
         <Route path="/admin/events" element={<Layout><Events /></Layout>} />
         <Route path="/admin/events-list" element={<Layout><EventsList /></Layout>} />
