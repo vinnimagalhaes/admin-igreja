@@ -30,6 +30,7 @@ export default function Raffles(): React.ReactElement {
     prizeDescription: '',
     prizeImage: ''
   });
+  const [numberQuantity, setNumberQuantity] = useState<number>(100);
 
   useEffect(() => {
     const savedRaffles = localStorage.getItem('raffles');
@@ -39,8 +40,7 @@ export default function Raffles(): React.ReactElement {
   }, []);
 
   const handleCreateRaffle = () => {
-    // Gerar números da rifa (por exemplo, de 0000 a 9999)
-    const numbers = Array.from({ length: 10000 }, (_, i) => ({
+    const numbers = Array.from({ length: numberQuantity }, (_, i) => ({
       number: i.toString().padStart(4, '0'),
       status: 'available'
     }));
@@ -58,8 +58,8 @@ export default function Raffles(): React.ReactElement {
   };
 
   return (
-    <div className="raffles-container">
-      <header className="raffles-header">
+    <div className="container">
+      <header className="page-header">
         <h1>Rifas</h1>
         <button 
           className="action-button"
@@ -69,7 +69,7 @@ export default function Raffles(): React.ReactElement {
         </button>
       </header>
 
-      <div className="raffles-grid">
+      <div className="content-wrapper">
         {raffles.map(raffle => (
           <div 
             key={raffle.id} 
@@ -81,29 +81,23 @@ export default function Raffles(): React.ReactElement {
             </div>
             <div className="raffle-info">
               <h2>{raffle.title}</h2>
-              <p className="raffle-description">{raffle.description}</p>
-              <p className="raffle-price">Valor: R$ {raffle.price.toFixed(2)}</p>
-              <p className="raffle-date">
-                Data do Sorteio: {new Date(raffle.drawDate).toLocaleDateString()}
-              </p>
-              <div className="raffle-stats">
-                <div className="stat">
+              <p className="description">{raffle.description}</p>
+              <div className="details">
+                <span className="price">R$ {raffle.price.toFixed(2)}</span>
+                <span className="date">{new Date(raffle.drawDate).toLocaleDateString()}</span>
+              </div>
+              <div className="stats">
+                <div className="stat-item">
                   <span>Disponíveis</span>
-                  <span>
-                    {raffle.numbers.filter(n => n.status === 'available').length}
-                  </span>
+                  <strong>{raffle.numbers.filter(n => n.status === 'available').length}</strong>
                 </div>
-                <div className="stat">
+                <div className="stat-item">
                   <span>Reservados</span>
-                  <span>
-                    {raffle.numbers.filter(n => n.status === 'reserved').length}
-                  </span>
+                  <strong>{raffle.numbers.filter(n => n.status === 'reserved').length}</strong>
                 </div>
-                <div className="stat">
+                <div className="stat-item">
                   <span>Vendidos</span>
-                  <span>
-                    {raffle.numbers.filter(n => n.status === 'sold').length}
-                  </span>
+                  <strong>{raffle.numbers.filter(n => n.status === 'sold').length}</strong>
                 </div>
               </div>
             </div>
@@ -113,7 +107,7 @@ export default function Raffles(): React.ReactElement {
 
       {showCreateModal && (
         <div className="modal-overlay">
-          <div className="create-raffle-modal">
+          <div className="modal-content">
             <h2>Nova Rifa</h2>
             <div className="form-group">
               <label>Título da Rifa</label>
@@ -169,6 +163,16 @@ export default function Raffles(): React.ReactElement {
                 placeholder="URL da imagem do prêmio"
                 value={newRaffle.prizeImage}
                 onChange={e => setNewRaffle({ ...newRaffle, prizeImage: e.target.value })}
+              />
+            </div>
+            <div className="form-group">
+              <label>Quantidade de Números</label>
+              <input
+                type="number"
+                min="1"
+                max="10000"
+                value={numberQuantity}
+                onChange={e => setNumberQuantity(Number(e.target.value))}
               />
             </div>
             <div className="modal-buttons">
