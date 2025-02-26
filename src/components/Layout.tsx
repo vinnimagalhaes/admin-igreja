@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaChurch } from 'react-icons/fa';
-import { ThemeSwitch } from './ThemeSwitch';
 import './Layout.css';
 
 interface LayoutProps {
@@ -46,10 +45,6 @@ export function Layout({ children }: LayoutProps) {
             </button>
           ))}
         </nav>
-
-        <div className="sidebar-footer">
-          <ThemeSwitch />
-        </div>
       </aside>
 
       <main className="main-content" onClick={() => isSidebarOpen && setIsSidebarOpen(false)}>

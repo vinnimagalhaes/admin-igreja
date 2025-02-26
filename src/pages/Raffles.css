@@ -11,6 +11,12 @@
   margin-bottom: 32px;
 }
 
+.page-header h1 {
+  font-size: var(--font-size-title);
+  color: #dddddd;
+  margin: 0;
+}
+
 .content-wrapper {
   display: flex;
   flex-direction: column;

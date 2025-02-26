@@ -1,89 +1,66 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/shared.css';
+import { FaChurch } from 'react-icons/fa';
 import './Login.css';
 
-function Login() {
+export default function Login() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Credenciais originais
-    if (email === 'vinicius@gmail.com' && password === '123') {
-      navigate('/admin/dashboard');
-    } else {
-      setError('Email ou senha inválidos');
-    }
+    // Simulação de login
+    navigate('/admin/dashboard');
   };
 
   return (
     <div className="login-container">
-      <div className="login-box">
-        <div className="logo-container">
-          <div className="logo">⚡️</div>
+      <div className="login-card">
+        <div className="login-header">
+          <FaChurch size={48} color="#22c55e" />
           <h1>Paróquia N. Sra. Aparecida</h1>
+          <p>Faça login para acessar o painel administrativo</p>
         </div>
-
-        <div className="login-options">
-          <button 
-            className="public-access-button"
-            onClick={() => navigate('/events-user')}
-          >
-            🎫 Ver Eventos Disponíveis
-          </button>
-
-          <div className="divider">
-            <span>ou</span>
+        
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </div>
-
-          <form onSubmit={handleLogin}>
-            <h2>Acesso Administrativo</h2>
-            
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Digite seu email"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Senha</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Digite sua senha"
-              />
-            </div>
-
-            {error && <div className="error-message">{error}</div>}
-
-            <button type="submit" className="submit-button">
-              Entrar
-            </button>
-
-            <div className="forgot-password">
-              <a href="#" onClick={(e) => {
-                e.preventDefault();
-                // Adicionar lógica de recuperação de senha
-              }}>
-                Esqueceu sua senha?
-              </a>
-            </div>
-          </form>
-        </div>
+          
+          <div className="form-group">
+            <label>Senha</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          
+          <button type="submit" className="login-button">
+            Entrar
+          </button>
+        </form>
       </div>
     </div>
   );
 }
-
-export default Login;

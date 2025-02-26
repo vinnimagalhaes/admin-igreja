@@ -2,7 +2,7 @@
   padding: 32px;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #f9fafb;
+  background-color: transparent;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,9 +23,9 @@
 }
 
 .events-list-header h1 {
-  color: #1f2937;
+  font-size: var(--font-size-title);
+  color: #dddddd;
   margin: 0;
-  font-size: 24px;
 }
 
 .action-button {
@@ -49,8 +49,8 @@
 }
 
 .events-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
 }
 
