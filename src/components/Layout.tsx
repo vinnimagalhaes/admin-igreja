@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom';
+import { ThemeSwitch } from './ThemeSwitch';
 import './Layout.css';
-import { useTheme } from '../contexts/ThemeContext';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,12 +9,11 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const { isDarkMode, toggleTheme } = useTheme();
 
   const menuItems = [
-    { path: '/admin/dashboard', label: '📊 Dashboard', icon: '🏠' },
-    { path: '/admin/events-list', label: '📅 Meus Eventos', icon: '📋' },
-    { path: '/admin/raffles', label: '🎫 Rifas', icon: '🎫' }
+    { path: '/admin/dashboard', label: 'Dashboard', icon: '📊' },
+    { path: '/admin/events-list', label: 'Meus Eventos', icon: '📅' },
+    { path: '/admin/raffles', label: 'Rifas', icon: '🎫' }
   ];
 
   return (
@@ -36,10 +35,9 @@ export function Layout({ children }: LayoutProps) {
             </button>
           ))}
         </nav>
-        <div className="theme-toggle">
-          <button onClick={toggleTheme}>
-            {isDarkMode ? '☀️ Modo Claro' : '🌙 Modo Escuro'}
-          </button>
+
+        <div className="sidebar-footer">
+          <ThemeSwitch />
         </div>
       </aside>
 
