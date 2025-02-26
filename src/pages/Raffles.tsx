@@ -19,6 +19,8 @@ export default function Raffles(): React.ReactElement {
   const navigate = useNavigate();
   const [raffles, setRaffles] = useState<Raffle[]>([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedRaffle, setSelectedRaffle] = useState<Raffle | null>(null);
   const [newRaffle, setNewRaffle] = useState<Raffle>({
     id: Date.now(),
     title: '',
@@ -57,6 +59,22 @@ export default function Raffles(): React.ReactElement {
     setShowCreateModal(false);
   };
 
+  const handleDeleteClick = (e: React.MouseEvent, raffle: Raffle) => {
+    e.stopPropagation(); // Evita a navegação ao clicar no botão de excluir
+    setSelectedRaffle(raffle);
+    setShowDeleteModal(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (selectedRaffle) {
+      const updatedRaffles = raffles.filter(raffle => raffle.id !== selectedRaffle.id);
+      setRaffles(updatedRaffles);
+      localStorage.setItem('raffles', JSON.stringify(updatedRaffles));
+      setShowDeleteModal(false);
+      setSelectedRaffle(null);
+    }
+  };
+
   return (
     <div className="container">
       <header className="page-header">
@@ -80,7 +98,15 @@ export default function Raffles(): React.ReactElement {
               <img src={raffle.image || 'https://via.placeholder.com/300'} alt={raffle.title} />
             </div>
             <div className="raffle-info">
-              <h2>{raffle.title}</h2>
+              <div className="raffle-header">
+                <h2>{raffle.title}</h2>
+                <button 
+                  className="delete-button"
+                  onClick={(e) => handleDeleteClick(e, raffle)}
+                >
+                  🗑️
+                </button>
+              </div>
               <p className="description">{raffle.description}</p>
               <div className="details">
                 <span className="price">R$ {raffle.price.toFixed(2)}</span>
@@ -104,6 +130,32 @@ export default function Raffles(): React.ReactElement {
           </div>
         ))}
       </div>
+
+      {showDeleteModal && selectedRaffle && (
+        <div className="modal-overlay">
+          <div className="delete-modal">
+            <h2>Confirmar Exclusão</h2>
+            <p>Tem certeza que deseja excluir a rifa "{selectedRaffle.title}"?</p>
+            <div className="modal-buttons">
+              <button 
+                className="cancel-button"
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  setSelectedRaffle(null);
+                }}
+              >
+                Cancelar
+              </button>
+              <button 
+                className="delete-confirm-button"
+                onClick={handleConfirmDelete}
+              >
+                Excluir
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showCreateModal && (
         <div className="modal-overlay">
