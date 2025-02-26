@@ -7,8 +7,8 @@
 
 .raffle-number {
   background-color: #1e1e1e;
-  color: #dddddd;
-  border: 1px solid var(--border-color);
+  color: #ffffff;
+  border: none;
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
