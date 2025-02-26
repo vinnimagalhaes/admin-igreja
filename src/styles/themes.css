@@ -1,39 +1,73 @@
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f3f4f6;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --border-color: #e5e7eb;
+  /* Cores principais */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  
+  /* Elementos de UI */
   --card-bg: #ffffff;
   --sidebar-bg: #ffffff;
+  --input-bg: #ffffff;
+  --modal-bg: #ffffff;
+  
+  /* Bordas e Divisores */
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+  
+  /* Cores de Ação */
   --accent-color: #22c55e;
   --accent-hover: #16a34a;
-  --input-bg: #ffffff;
-  --input-border: #d1d5db;
   --error-color: #ef4444;
-  --success-color: #22c55e;
   --warning-color: #f59e0b;
+  --success-color: #22c55e;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Overlay */
   --modal-overlay: rgba(0, 0, 0, 0.5);
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  
+  /* Espaçamentos padrão */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Arredondamento */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
 }
 
 [data-theme='dark'] {
-  --bg-primary: #111827;
-  --bg-secondary: #1f2937;
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --border-color: #374151;
-  --card-bg: #1f2937;
-  --sidebar-bg: #1f2937;
-  --accent-color: #22c55e;
-  --accent-hover: #16a34a;
-  --input-bg: #374151;
-  --input-border: #4b5563;
-  --error-color: #ef4444;
-  --success-color: #22c55e;
-  --warning-color: #f59e0b;
+  /* Cores principais */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  
+  /* Elementos de UI */
+  --card-bg: #1e293b;
+  --sidebar-bg: #1e293b;
+  --input-bg: #334155;
+  --modal-bg: #1e293b;
+  
+  /* Bordas e Divisores */
+  --border-color: #334155;
+  --border-hover: #475569;
+  
+  /* Sombras (mais sutis no modo escuro) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  
+  /* Overlay mais escuro */
   --modal-overlay: rgba(0, 0, 0, 0.7);
-  --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 body {
