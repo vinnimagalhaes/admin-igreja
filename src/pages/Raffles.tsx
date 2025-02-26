@@ -159,74 +159,89 @@ export default function Raffles(): React.ReactElement {
 
       {showCreateModal && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div className="create-raffle-modal">
             <h2>Nova Rifa</h2>
-            <div className="form-group">
-              <label>Título da Rifa</label>
-              <input
-                type="text"
-                value={newRaffle.title}
-                onChange={e => setNewRaffle({ ...newRaffle, title: e.target.value })}
-              />
+            <div className="form-grid">
+              <div className="form-group">
+                <label>Título da Rifa</label>
+                <input
+                  type="text"
+                  placeholder="Ex: Rifa Beneficente"
+                  value={newRaffle.title}
+                  onChange={e => setNewRaffle({ ...newRaffle, title: e.target.value })}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Valor do Número</label>
+                <input
+                  type="number"
+                  placeholder="R$ 0,00"
+                  value={newRaffle.price}
+                  onChange={e => setNewRaffle({ ...newRaffle, price: Number(e.target.value) })}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Data do Sorteio</label>
+                <input
+                  type="date"
+                  value={newRaffle.drawDate}
+                  onChange={e => setNewRaffle({ ...newRaffle, drawDate: e.target.value })}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Quantidade de Números</label>
+                <input
+                  type="number"
+                  min="1"
+                  max="10000"
+                  placeholder="Ex: 1000"
+                  value={numberQuantity}
+                  onChange={e => setNumberQuantity(Number(e.target.value))}
+                />
+              </div>
+
+              <div className="form-group full-width">
+                <label>Descrição da Rifa</label>
+                <textarea
+                  placeholder="Descreva os detalhes da rifa..."
+                  value={newRaffle.description}
+                  onChange={e => setNewRaffle({ ...newRaffle, description: e.target.value })}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Imagem da Rifa</label>
+                <input
+                  type="text"
+                  placeholder="URL da imagem"
+                  value={newRaffle.image}
+                  onChange={e => setNewRaffle({ ...newRaffle, image: e.target.value })}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Imagem do Prêmio</label>
+                <input
+                  type="text"
+                  placeholder="URL da imagem do prêmio"
+                  value={newRaffle.prizeImage}
+                  onChange={e => setNewRaffle({ ...newRaffle, prizeImage: e.target.value })}
+                />
+              </div>
+
+              <div className="form-group full-width">
+                <label>Descrição do Prêmio</label>
+                <textarea
+                  placeholder="Descreva os detalhes do prêmio..."
+                  value={newRaffle.prizeDescription}
+                  onChange={e => setNewRaffle({ ...newRaffle, prizeDescription: e.target.value })}
+                />
+              </div>
             </div>
-            <div className="form-group">
-              <label>Descrição</label>
-              <textarea
-                value={newRaffle.description}
-                onChange={e => setNewRaffle({ ...newRaffle, description: e.target.value })}
-              />
-            </div>
-            <div className="form-group">
-              <label>Valor do Número</label>
-              <input
-                type="number"
-                value={newRaffle.price}
-                onChange={e => setNewRaffle({ ...newRaffle, price: Number(e.target.value) })}
-              />
-            </div>
-            <div className="form-group">
-              <label>Data do Sorteio</label>
-              <input
-                type="date"
-                value={newRaffle.drawDate}
-                onChange={e => setNewRaffle({ ...newRaffle, drawDate: e.target.value })}
-              />
-            </div>
-            <div className="form-group">
-              <label>Imagem da Rifa</label>
-              <input
-                type="text"
-                placeholder="URL da imagem"
-                value={newRaffle.image}
-                onChange={e => setNewRaffle({ ...newRaffle, image: e.target.value })}
-              />
-            </div>
-            <div className="form-group">
-              <label>Descrição do Prêmio</label>
-              <textarea
-                value={newRaffle.prizeDescription}
-                onChange={e => setNewRaffle({ ...newRaffle, prizeDescription: e.target.value })}
-              />
-            </div>
-            <div className="form-group">
-              <label>Imagem do Prêmio</label>
-              <input
-                type="text"
-                placeholder="URL da imagem do prêmio"
-                value={newRaffle.prizeImage}
-                onChange={e => setNewRaffle({ ...newRaffle, prizeImage: e.target.value })}
-              />
-            </div>
-            <div className="form-group">
-              <label>Quantidade de Números</label>
-              <input
-                type="number"
-                min="1"
-                max="10000"
-                value={numberQuantity}
-                onChange={e => setNumberQuantity(Number(e.target.value))}
-              />
-            </div>
+
             <div className="modal-buttons">
               <button 
                 className="cancel-button"

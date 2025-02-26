@@ -3,33 +3,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f9fafb;
-  padding: 16px;
+  background-color: var(--bg-primary);
 }
 
-.login-box {
-  background: white;
+.login-card {
+  background-color: var(--card-bg);
   padding: 32px;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--shadow-color);
   width: 100%;
   max-width: 400px;
 }
 
-.logo-container {
+.login-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
-.logo {
-  font-size: 48px;
-  margin-bottom: 16px;
-}
-
-.logo-container h1 {
+.login-header h1 {
+  color: var(--text-primary);
   margin: 0;
-  color: #1f2937;
-  font-size: 24px;
 }
 
 .login-options {
@@ -92,17 +85,16 @@ form h2 {
 .form-group label {
   display: block;
   margin-bottom: 8px;
-  color: #4b5563;
-  font-weight: 500;
+  color: var(--text-secondary);
 }
 
 .form-group input {
   width: 100%;
   padding: 12px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--input-border);
   border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.2s;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
 }
 
 .form-group input:focus {
@@ -118,22 +110,20 @@ form h2 {
   text-align: center;
 }
 
-.submit-button {
+.login-button {
   width: 100%;
   padding: 12px;
-  background-color: #22c55e;
+  background-color: var(--accent-color);
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  font-weight: 600;
+  transition: background-color 0.2s;
 }
 
-.submit-button:hover {
-  background-color: #16a34a;
-  transform: translateY(-2px);
+.login-button:hover {
+  background-color: var(--accent-hover);
 }
 
 .forgot-password {
@@ -152,7 +142,7 @@ form h2 {
 }
 
 @media (max-width: 480px) {
-  .login-box {
+  .login-card {
     padding: 24px;
   }
 }

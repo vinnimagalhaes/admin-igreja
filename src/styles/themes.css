@@ -5,8 +5,16 @@
   --text-secondary: #6b7280;
   --border-color: #e5e7eb;
   --card-bg: #ffffff;
+  --sidebar-bg: #ffffff;
   --accent-color: #22c55e;
   --accent-hover: #16a34a;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --error-color: #ef4444;
+  --success-color: #22c55e;
+  --warning-color: #f59e0b;
+  --modal-overlay: rgba(0, 0, 0, 0.5);
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme='dark'] {
@@ -16,8 +24,16 @@
   --text-secondary: #9ca3af;
   --border-color: #374151;
   --card-bg: #1f2937;
+  --sidebar-bg: #1f2937;
   --accent-color: #22c55e;
   --accent-hover: #16a34a;
+  --input-bg: #374151;
+  --input-border: #4b5563;
+  --error-color: #ef4444;
+  --success-color: #22c55e;
+  --warning-color: #f59e0b;
+  --modal-overlay: rgba(0, 0, 0, 0.7);
+  --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 body {

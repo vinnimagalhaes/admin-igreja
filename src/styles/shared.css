@@ -7,10 +7,10 @@
 }
 
 .card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px var(--shadow-color);
 }
 
 .action-button {
@@ -31,4 +31,92 @@
 .action-button:hover {
   background-color: #16a34a;
   transform: translateY(-2px);
+}
+
+/* Estilos base */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Inputs e Forms */
+input, textarea, select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+/* Botões */
+.button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.button-primary {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Modais */
+.modal-overlay {
+  background-color: var(--modal-overlay);
+}
+
+.modal-content {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+}
+
+/* Links */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Tables */
+table {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+th, td {
+  border-color: var(--border-color);
+}
+
+/* Status indicators */
+.status-success {
+  color: var(--success-color);
+}
+
+.status-error {
+  color: var(--error-color);
+}
+
+.status-warning {
+  color: var(--warning-color);
 }

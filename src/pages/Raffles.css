@@ -172,3 +172,136 @@
 .cancel-button:hover {
   background-color: var(--border-color);
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--modal-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+}
+
+.create-raffle-modal {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.create-raffle-modal h2 {
+  color: var(--text-primary);
+  margin: 0 0 24px 0;
+  font-size: 24px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 16px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.cancel-button,
+.confirm-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-button {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: none;
+}
+
+.cancel-button:hover {
+  background-color: var(--border-color);
+}
+
+.confirm-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+}
+
+.confirm-button:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .create-raffle-modal {
+    padding: 24px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: auto;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .cancel-button,
+  .confirm-button {
+    width: 100%;
+  }
+}
