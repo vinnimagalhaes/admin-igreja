@@ -171,17 +171,20 @@
 }
 
 .no-events {
+  background-color: #1e1e1e;
+  border-radius: var(--border-radius);
+  padding: 48px 32px;
   text-align: center;
-  padding: 48px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #94a3b8;
 }
 
-.no-events .icon {
-  font-size: 48px;
+.no-events h3 {
+  color: #dddddd;
   margin-bottom: 16px;
-  display: block;
+}
+
+.no-events p {
+  margin-bottom: 24px;
 }
 
 @media (max-width: 768px) {

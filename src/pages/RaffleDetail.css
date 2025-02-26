@@ -1,0 +1,94 @@
+.raffle-numbers-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.raffle-number {
+  background-color: #1e1e1e;
+  color: #dddddd;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.raffle-number:hover {
+  background-color: var(--accent-light);
+}
+
+.raffle-number.sold {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  cursor: not-allowed;
+}
+
+.raffle-number.reserved {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+
+.raffle-detail-container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.raffle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.raffle-info {
+  background-color: #1e1e1e;
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.raffle-image {
+  width: 100%;
+  height: 300px;
+  background-color: #1e1e1e;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.raffle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilo iFood-like para os estados */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status-badge.sold {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.status-badge.available {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.status-badge.reserved {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+} 
