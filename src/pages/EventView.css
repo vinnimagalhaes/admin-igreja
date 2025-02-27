@@ -206,6 +206,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
+  width: 100%;
+  padding: 0 16px;
+}
+
+.events-list-header h1 {
+  margin: 0;
+  font-size: 24px;
 }
 
 .events-list-header .button-primary {
@@ -213,6 +220,20 @@
   font-size: 14px !important;
   height: auto !important;
   width: auto !important;
+  margin-left: auto;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.events-list-header .button-primary:hover {
+  background-color: var(--accent-hover);
 }
 
 @media (max-width: 768px) {
