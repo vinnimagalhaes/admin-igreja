@@ -2,7 +2,8 @@ import { useParams } from 'react-router-dom';
 import '../../styles/public/Checkout.css';
 
 export default function Checkout() {
-  const { eventId } = useParams();
+  // Remova o eventId se não estiver usando ainda
+  // const { eventId } = useParams();
 
   return (
     <div className="checkout-container">
