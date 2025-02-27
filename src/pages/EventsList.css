@@ -1,19 +1,39 @@
 .events-list-container {
-  max-width: 1136px;
-  margin: 0 auto;
   padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.events-header {
+.events-list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
 }
 
-.events-header h1 {
-  color: #ffffff;
+.events-list-header h1 {
+  font-size: 24px;
   margin: 0;
+  color: var(--text-primary);
+}
+
+.events-list-header .button-primary {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+}
+
+.events-list-header .button-primary:hover {
+  background-color: var(--accent-hover);
 }
 
 .create-event-button {
