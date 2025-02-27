@@ -10,6 +10,7 @@ import RaffleCheckout from './pages/RaffleCheckout';
 import Login from './pages/Login';
 import { Layout } from './components/Layout';
 import './styles/shared.css';
+import EventView from './pages/EventView';
 
 // Removidas as importações não utilizadas:
 // - ThemeProvider
@@ -36,6 +37,8 @@ function App() {
         
         <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
         <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="/events/:id" element={<EventView />} />
+        <Route path="/events/:id/checkout" element={<RaffleCheckout />} />
       </Routes>
     </Router>
   );

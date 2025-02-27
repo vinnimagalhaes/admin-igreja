@@ -107,6 +107,12 @@ export default function EventsList() {
                 <p className="event-products">{event.products.length} produtos</p>
                 <div className="event-card-footer">
                   <button 
+                    className="button-secondary" 
+                    onClick={() => navigate(`/events/${event.id}`)}
+                  >
+                    Ver evento
+                  </button>
+                  <button 
                     className="button-primary" 
                     onClick={() => navigate(`/admin/events/${event.id}`)}
                   >
