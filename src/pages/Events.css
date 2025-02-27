@@ -1302,12 +1302,10 @@ th,td {
 }
 
 .products-section {
-  flex: 1;
-  background: #1e1e1e;
+  background-color: var(--bg-secondary);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  border: 1px solid #333333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .products-section h2 {
@@ -1975,11 +1973,10 @@ th,td {
 }
 
 .event-description {
+  margin-top: 24px;
   color: #4b5563;
-  margin: 16px 0;
-  font-size: 16px;
   line-height: 1.6;
-  flex-grow: 1
+  font-size: 16px
 }
 
 .event-actions {
@@ -2798,4 +2795,30 @@ th,td {
   .numbers-grid {
       grid-template-columns: repeat(auto-fill,minmax(80px,1fr))
   }
+}
+
+.button-primary {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.events-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
 }
