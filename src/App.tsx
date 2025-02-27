@@ -1,25 +1,22 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { ThemeProvider } from './contexts/ThemeContext';
-import { Layout } from './components/Layout';
-import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import Events from './pages/Events';
-import EventsUser from './pages/EventsUser';
 import EventsList from './pages/EventsList';
-import EventDetails from './pages/EventDetails';
-import Raffles from './pages/Raffles';
-import RaffleManagement from './pages/RaffleManagement';
 import CreateEvent from './pages/CreateEvent';
 import EventDetail from './pages/EventDetail';
 import CreateRaffle from './pages/CreateRaffle';
 import RaffleDetail from './pages/RaffleDetail';
+import Raffles from './pages/Raffles';
 import RaffleCheckout from './pages/RaffleCheckout';
+import Login from './pages/Login';
+import { Layout } from './components/Layout';
 import './styles/shared.css';
 
-// Componentes temporários para as páginas que ainda não foram criadas
-const EventDetail = () => <div className="container"><h1>Detalhes do Evento</h1><p>Esta página está em desenvolvimento</p></div>;
-const CreateRaffle = () => <div className="container"><h1>Criar Rifa</h1><p>Esta página está em desenvolvimento</p></div>;
-const RaffleDetail = () => <div className="container"><h1>Detalhes da Rifa</h1><p>Esta página está em desenvolvimento</p></div>;
+// Removidas as importações não utilizadas:
+// - ThemeProvider
+// - Events
+// - EventsUser
+// - EventDetails
+// - RaffleManagement
 
 function App() {
   return (
