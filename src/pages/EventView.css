@@ -66,8 +66,8 @@
 }
 
 .product-card {
-  background-color: #1e1e1e;
-  border-radius: 12px;
+  background-color: #222222;
+  border-radius: var(--border-radius);
   overflow: hidden;
   transition: transform 0.2s ease;
 }
@@ -76,13 +76,13 @@
   transform: translateY(-4px);
 }
 
-.product-card .product-image {
+.product-image {
   width: 100%;
   height: 200px;
   overflow: hidden;
 }
 
-.product-card .product-image img {
+.product-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
