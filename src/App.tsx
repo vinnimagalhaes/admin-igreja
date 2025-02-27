@@ -23,34 +23,24 @@ const RaffleDetail = () => <div className="container"><h1>Detalhes da Rifa</h1><
 
 function App() {
   return (
-    <ThemeProvider>
-      <Router>
-        <Routes>
-          {/* Rota inicial vai para a página de login que tem as duas opções */}
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<Login />} />
-
-          {/* Rotas públicas */}
-          <Route path="/events-user" element={<EventsUser />} />
-          <Route path="/events-user/:id" element={<EventDetails />} />
-          
-          {/* Rotas administrativas */}
-          <Route path="/admin" element={<Layout><Dashboard /></Layout>} />
-          <Route path="/admin/dashboard" element={<Layout><Dashboard /></Layout>} />
-          <Route path="/admin/events" element={<Layout><Events /></Layout>} />
-          <Route path="/admin/events-list" element={<Layout><EventsList /></Layout>} />
-          <Route path="/admin/create-event" element={<Layout><CreateEvent /></Layout>} />
-          <Route path="/admin/events/:id" element={<Layout><EventDetail /></Layout>} />
-          <Route path="/admin/raffles" element={<Layout><Raffles /></Layout>} />
-          <Route path="/admin/create-raffle" element={<Layout><CreateRaffle /></Layout>} />
-          <Route path="/admin/raffles/:id" element={<Layout><RaffleDetail /></Layout>} />
-          <Route path="/admin/raffles/:id/buy" element={<RaffleCheckout />} />
-
-          {/* Rotas de navegação padrão */}
-          <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
-        </Routes>
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/raffles/:id/buy" element={<RaffleCheckout />} />
+        
+        <Route path="/admin" element={<Layout><Dashboard /></Layout>} />
+        <Route path="/admin/dashboard" element={<Layout><Dashboard /></Layout>} />
+        <Route path="/admin/events-list" element={<Layout><EventsList /></Layout>} />
+        <Route path="/admin/create-event" element={<Layout><CreateEvent /></Layout>} />
+        <Route path="/admin/events/:id" element={<Layout><EventDetail /></Layout>} />
+        <Route path="/admin/raffles" element={<Layout><Raffles /></Layout>} />
+        <Route path="/admin/create-raffle" element={<Layout><CreateRaffle /></Layout>} />
+        <Route path="/admin/raffles/:id" element={<Layout><RaffleDetail /></Layout>} />
+        
+        <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
+      </Routes>
+    </Router>
   );
 }
 
