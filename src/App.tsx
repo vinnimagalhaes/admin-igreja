@@ -1,62 +1,52 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
-import EventsList from './pages/admin/EventsList';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Layout } from './components/Layout';
+import { ThemeProvider } from './contexts/ThemeContext';
+
+// Imports Admin
 import CreateEvent from './pages/admin/CreateEvent';
+import Events from './pages/admin/Events';
+import EventsList from './pages/admin/EventsList';
 import EventDetail from './pages/admin/EventDetail';
-import CreateRaffle from './pages/CreateRaffle';
+import Dashboard from './pages/Dashboard';
+import RaffleManagement from './pages/RaffleManagement';
 import RaffleDetail from './pages/RaffleDetail';
 import Raffles from './pages/Raffles';
-import RaffleCheckout from './pages/RaffleCheckout';
-import Login from './pages/Login';
-import { Layout } from './components/Layout';
-import './styles/shared.css';
-import EventView from './pages/public/EventView';
-import ProductCheckout from './pages/public/ProductCheckout';
-import PublicEventView from './pages/public/EventView';
-import { ThemeProvider } from './contexts/ThemeContext';
-import Events from './pages/Events';
+import CreateRaffle from './pages/CreateRaffle';
 
-// Removidas as importações não utilizadas:
-// - ThemeProvider
-// - Events
-// - EventsUser
-// - EventDetails
-// - RaffleManagement
+// Imports Public
+import EventView from './pages/public/EventView';
+import Checkout from './pages/public/Checkout';
+import ProductCheckout from './pages/public/ProductCheckout';
+import Login from './pages/Login';
 
 function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
+          {/* Rota de Login */}
           <Route path="/login" element={<Login />} />
-          <Route path="/raffles/:id/buy" element={<RaffleCheckout />} />
-          
-          <Route path="/admin" element={<Layout><Dashboard /></Layout>} />
-          <Route path="/admin/dashboard" element={<Layout><Dashboard /></Layout>} />
-          <Route path="/admin/events-list" element={<Layout><EventsList /></Layout>} />
-          <Route path="/admin/create-event" element={<Layout><Events /></Layout>} />
-          <Route path="/admin/events/:id" element={<Layout><EventDetail /></Layout>} />
-          <Route path="/admin/raffles" element={<Layout><Raffles /></Layout>} />
-          <Route path="/admin/create-raffle" element={<Layout><CreateRaffle /></Layout>} />
-          <Route path="/admin/raffles/:id" element={<Layout><RaffleDetail /></Layout>} />
-          
-          <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
-          <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
-          <Route path="/events/:id" element={<EventView />} />
-          <Route path="/events/:id/checkout" element={<ProductCheckout />} />
-          <Route path="/events/:eventId" element={<PublicEventView />} />
-          <Route path="/event/:eventId" element={<PublicEventView />} />
-          
+
+          {/* Rotas Públicas */}
+          <Route path="/event/:eventId" element={<EventView />} />
+          <Route path="/checkout/:eventId" element={<Checkout />} />
+          <Route path="/product-checkout/:eventId" element={<ProductCheckout />} />
+
           {/* Rotas Admin (protegidas) */}
           <Route 
             path="/admin/*" 
             element={
               <Layout>
                 <Routes>
+                  <Route path="/" element={<Dashboard />} />
                   <Route path="events-list" element={<EventsList />} />
-                  <Route path="create-event" element={<Events />} />
+                  <Route path="create-event" element={<CreateEvent />} />
+                  <Route path="events" element={<Events />} />
                   <Route path="events/:id" element={<EventDetail />} />
+                  <Route path="raffles" element={<Raffles />} />
                   <Route path="create-raffle" element={<CreateRaffle />} />
+                  <Route path="raffle-management" element={<RaffleManagement />} />
+                  <Route path="raffles/:id" element={<RaffleDetail />} />
                 </Routes>
               </Layout>
             } 
