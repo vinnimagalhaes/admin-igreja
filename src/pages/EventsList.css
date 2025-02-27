@@ -28,8 +28,11 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   height: 36px;
+  width: 180px;
+  max-width: 180px;
 }
 
 .events-list-header .button-primary:hover {
