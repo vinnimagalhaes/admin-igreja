@@ -184,7 +184,6 @@ function Events() {
             value={newProduct.category}
             onChange={e => setNewProduct({ ...newProduct, category: e.target.value as Product['category'] })}
           >
-            <option value="ticket">Ingresso</option>
             <option value="food">Comida</option>
             <option value="drink">Bebida</option>
             <option value="other">Outro</option>

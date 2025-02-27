@@ -68,6 +68,39 @@ body {
   color: var(--text-primary)
 }
 
+input,textarea,select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: 6px
+}
+
+.add-product-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 24px;
+  background-color: #f9fafb;
+  border-radius: 8px
+}
+
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  color: #6b7280
+}
+
 :root {
   --bg-primary: #121212;
   --bg-secondary: #1e1e1e;
@@ -971,15 +1004,15 @@ th,td {
   box-shadow: 0 1px 3px #0000001a
 }
 
-.event-form h2 {
-  color: #1f2937;
+.event-form h3 {
+  color: #ffffff;
   margin: 0 0 24px;
   font-size: 24px;
   font-weight: 600
 }
 
 .event-form h3 {
-  color: #1f2937;
+  /* color: #ffffff; */
   margin: 32px 0 24px;
   font-size: 20px;
   font-weight: 600;
@@ -1390,6 +1423,21 @@ th,td {
   height: 45px;
   padding: 12px;
   border-radius: 8px
+}
+
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  color: #6b7280
 }
 
 .events-user-container {
