@@ -56,6 +56,7 @@ function App() {
                   <Route path="events-list" element={<EventsList />} />
                   <Route path="create-event" element={<Events />} />
                   <Route path="events/:id" element={<EventDetail />} />
+                  <Route path="create-raffle" element={<CreateRaffle />} />
                 </Routes>
               </Layout>
             } 
