@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { saveEvents, loadEvents } from '../utils/storage';
+import { saveEvents, loadEvents } from '../../utils/storage';
 import '../styles/shared.css';
 import './Events.css';
 

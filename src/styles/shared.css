@@ -94,11 +94,16 @@ p {
 }
 
 /* Botões */
-.button {
+.button,
+.button-primary,
+.button-secondary,
+.add-to-cart-button,
+.edit-button,
+.delete-button {
   background-color: var(--accent-color);
   color: white;
   padding: 14px 24px;
-  border-radius: var(--border-radius);
+  border-radius: 8px !important;
   border: none;
   font-weight: 600;
   cursor: pointer;
