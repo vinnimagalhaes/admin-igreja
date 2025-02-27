@@ -44,7 +44,8 @@
 }
 
 .products-section {
-  margin-top: 48px;
+  margin-top: 24px;
+  background-color: var(--bg-secondary) !important;
 }
 
 .products-section h2 {
@@ -198,6 +199,20 @@
 
 .checkout-button:hover {
   background-color: var(--accent-hover);
+}
+
+.events-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.events-list-header .button-primary {
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  height: auto !important;
+  width: auto !important;
 }
 
 @media (max-width: 768px) {
