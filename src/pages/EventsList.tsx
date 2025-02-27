@@ -1,83 +1,123 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { loadEvents } from '../utils/storage';
-import '../styles/shared.css';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './EventsList.css';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 interface Product {
-  id: number;
+  id: string;
   name: string;
   price: number;
-  maxQuantity: number;
-  category: 'food' | 'drink' | 'ticket' | 'other';
-  description?: string;
-  image?: string;
+  imageUrl: string;
+  description: string;
+  type: string;
 }
 
 interface Event {
-  id: number;
-  name: string;
+  id: string;
+  title: string;
   date: string;
-  description: string;
   location: string;
-  image: string;
+  description: string;
+  imageUrl: string;
   products: Product[];
+  createdAt: string;
 }
 
-function EventsList() {
+export default function EventsList() {
   const navigate = useNavigate();
-  const [events] = useState<Event[]>(loadEvents());
+  const location = useLocation();
+  const [events, setEvents] = useState<Event[]>([]);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Obter eventos do localStorage
+    const storedEvents = localStorage.getItem('events');
+    if (storedEvents) {
+      setEvents(JSON.parse(storedEvents));
+    }
+
+    // Verificar se há mensagem de sucesso da página anterior
+    if (location.state?.message) {
+      setSuccessMessage(location.state.message);
+      // Limpar a mensagem após 5 segundos
+      setTimeout(() => {
+        setSuccessMessage(null);
+        // Limpar o state da localização para evitar que a mensagem apareça novamente
+        window.history.replaceState({}, document.title);
+      }, 5000);
+    }
+  }, [location.state]);
+
+  const formatEventDate = (dateString: string) => {
+    try {
+      return format(new Date(dateString), "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
+    } catch (error) {
+      console.error("Erro ao formatar data:", error);
+      return dateString;
+    }
+  };
 
   return (
     <div className="events-list-container">
-      <header className="events-list-header">
+      <div className="events-list-header">
         <h1>Meus Eventos</h1>
-        <button 
-          className="action-button"
-          onClick={() => navigate('/admin/events')}
+        <button
+          className="button-primary"
+          onClick={() => navigate('/admin/create-event')}
         >
           + Novo Evento
         </button>
-      </header>
+      </div>
 
-      <div className="events-grid">
-        {events.length > 0 ? (
-          events.map(event => (
+      {successMessage && (
+        <div className="success-message">
+          {successMessage}
+        </div>
+      )}
+
+      {events.length === 0 ? (
+        <div className="no-events">
+          <h3>Você ainda não criou nenhum evento</h3>
+          <p>Crie seu primeiro evento para começar a vender ingressos e produtos.</p>
+          <button
+            className="button-primary"
+            onClick={() => navigate('/admin/create-event')}
+          >
+            Criar meu primeiro evento
+          </button>
+        </div>
+      ) : (
+        <div className="events-grid">
+          {events.map((event) => (
             <div key={event.id} className="event-card">
-              <div className="event-image">
-                <img src={event.image || '/placeholder-event.jpg'} alt={event.name} />
+              <div className="event-card-image">
+                {event.imageUrl ? (
+                  <img src={event.imageUrl} alt={event.title} />
+                ) : (
+                  <div className="event-placeholder">
+                    <span>Sem imagem</span>
+                  </div>
+                )}
               </div>
-              <div className="event-info">
-                <h2>{event.name}</h2>
-                <p className="event-date">📅 {new Date(event.date).toLocaleDateString()}</p>
-                <p className="event-location">📍 {event.location}</p>
-                <p className="event-description">{event.description}</p>
-                <div className="event-actions">
+              <div className="event-card-content">
+                <h3>{event.title}</h3>
+                <p className="event-date">{formatEventDate(event.date)}</p>
+                <p className="event-location">{event.location}</p>
+                <p className="event-products">{event.products.length} produtos</p>
+                <div className="event-card-footer">
                   <button 
-                    className="edit-button"
-                    onClick={() => navigate(`/admin/events?edit=${event.id}`)}
+                    className="button-primary" 
+                    onClick={() => navigate(`/admin/events/${event.id}`)}
                   >
-                    ✏️ Editar
-                  </button>
-                  <button 
-                    className="view-button"
-                    onClick={() => navigate(`/event/${event.id}`)}
-                  >
-                    👁️ Ver Evento
+                    Gerenciar
                   </button>
                 </div>
               </div>
             </div>
-          ))
-        ) : (
-          <div className="no-events">
-            <span className="icon">📅</span>
-            <p>Nenhum evento cadastrado</p>
-          </div>
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
-
-export default EventsList;

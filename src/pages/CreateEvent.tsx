@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CreateEvent.css';
+import { v4 as uuidv4 } from 'uuid';
 
 interface EventForm {
   title: string;
@@ -11,6 +12,7 @@ interface EventForm {
 }
 
 interface Product {
+  id: string;
   name: string;
   price: number;
   imageUrl: string;
@@ -30,6 +32,7 @@ export default function CreateEvent() {
   });
   const [products, setProducts] = useState<Product[]>([]);
   const [newProduct, setNewProduct] = useState<Product>({
+    id: '',
     name: '',
     price: 0,
     imageUrl: '',
@@ -51,8 +54,13 @@ export default function CreateEvent() {
   };
 
   const handleAddProduct = () => {
-    setProducts(prev => [...prev, newProduct]);
+    const productWithId = {
+      ...newProduct,
+      id: uuidv4()
+    };
+    setProducts(prev => [...prev, productWithId]);
     setNewProduct({
+      id: '',
       name: '',
       price: 0,
       imageUrl: '',
@@ -62,9 +70,20 @@ export default function CreateEvent() {
   };
 
   const handleSubmit = () => {
-    // Aqui adicionaríamos a lógica para salvar o evento e seus produtos
-    // Por enquanto, vamos apenas simular um salvamento bem-sucedido
-    navigate('/admin/events-list');
+    const newEvent = {
+      id: uuidv4(),
+      ...eventForm,
+      products,
+      createdAt: new Date().toISOString()
+    };
+
+    const existingEvents = JSON.parse(localStorage.getItem('events') || '[]');
+    
+    localStorage.setItem('events', JSON.stringify([...existingEvents, newEvent]));
+    
+    navigate('/admin/events-list', { 
+      state: { message: 'Evento criado com sucesso!' } 
+    });
   };
 
   return (
@@ -84,6 +103,7 @@ export default function CreateEvent() {
                 name="title"
                 value={eventForm.title}
                 onChange={handleEventChange}
+                required
               />
             </div>
 
@@ -94,6 +114,7 @@ export default function CreateEvent() {
                 name="date"
                 value={eventForm.date}
                 onChange={handleEventChange}
+                required
               />
             </div>
 
@@ -104,6 +125,7 @@ export default function CreateEvent() {
                 name="location"
                 value={eventForm.location}
                 onChange={handleEventChange}
+                required
               />
             </div>
 
@@ -113,6 +135,7 @@ export default function CreateEvent() {
                 name="description"
                 value={eventForm.description}
                 onChange={handleEventChange}
+                required
               />
             </div>
 
@@ -123,6 +146,7 @@ export default function CreateEvent() {
                 name="imageUrl"
                 value={eventForm.imageUrl}
                 onChange={handleEventChange}
+                placeholder="https://exemplo.com/imagem.jpg"
               />
             </div>
 
@@ -135,7 +159,13 @@ export default function CreateEvent() {
               </button>
               <button 
                 className="button-primary" 
-                onClick={() => setStep(2)}
+                onClick={() => {
+                  if (eventForm.title && eventForm.date && eventForm.location) {
+                    setStep(2);
+                  } else {
+                    alert('Preencha os campos obrigatórios');
+                  }
+                }}
               >
                 Próximo: Adicionar Produtos
               </button>
@@ -143,7 +173,7 @@ export default function CreateEvent() {
           </>
         ) : (
           <>
-            <h2>Produtos do Evento</h2>
+            <h2>Produtos do Evento: {eventForm.title}</h2>
             
             <div className="product-form">
               <h3>Adicionar Novo Produto</h3>
@@ -193,6 +223,7 @@ export default function CreateEvent() {
                   name="imageUrl"
                   value={newProduct.imageUrl}
                   onChange={handleProductChange}
+                  placeholder="https://exemplo.com/produto.jpg"
                 />
               </div>
               
@@ -208,13 +239,14 @@ export default function CreateEvent() {
               <button 
                 className="button-accent" 
                 onClick={handleAddProduct}
+                disabled={!newProduct.name || newProduct.price <= 0}
               >
                 Adicionar Produto
               </button>
             </div>
             
             <div className="products-list">
-              <h3>Produtos Adicionados</h3>
+              <h3>Produtos Adicionados ({products.length})</h3>
               
               {products.length === 0 ? (
                 <p className="empty-products">Nenhum produto adicionado ainda</p>
