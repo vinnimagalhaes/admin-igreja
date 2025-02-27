@@ -170,9 +170,46 @@
 }
 
 .edit-button,
+.delete-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  height: 36px;
+  width: 120px;
+}
+
+.edit-button {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.delete-button {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.delete-button::before {
+  content: "🗑️";
+  font-size: 14px;
+}
+
+.edit-button:hover {
+  background-color: var(--accent-hover);
+}
+
+.delete-button:hover {
+  background-color: #444444;
+}
+
 .save-button,
 .cancel-button,
-.delete-button,
 .add-product-button {
   padding: 8px 16px;
   border-radius: 8px;
@@ -182,11 +219,6 @@
   transition: background-color 0.2s;
 }
 
-.edit-button {
-  background-color: var(--accent-color);
-  color: white;
-}
-
 .save-button {
   background-color: #22c55e;
   color: white;
@@ -194,11 +226,6 @@
 
 .cancel-button {
   background-color: #4b5563;
-  color: white;
-}
-
-.delete-button {
-  background-color: #dc2626;
   color: white;
 }
 
