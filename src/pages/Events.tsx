@@ -159,7 +159,7 @@ function Events() {
           />
         </div>
 
-        <h3>Produtos</h3>
+        <h3>Adicionar produto</h3>
         {currentEvent.products.map(product => (
           <div key={product.id} className="product-item">
             <span>{product.name} - R$ {product.price}</span>
