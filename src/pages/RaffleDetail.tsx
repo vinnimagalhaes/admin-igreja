@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import './RaffleDetail.css';
 
 interface RaffleNumber {
   number: string;
-  status: 'available' | 'sold' | 'reserved';
+  status: 'available' | 'reserved' | 'sold';
   buyer?: string;
 }
 
@@ -22,7 +22,6 @@ interface Raffle {
 
 export default function RaffleDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const location = useLocation();
   const [raffle, setRaffle] = useState<Raffle | null>(null);
   const [loading, setLoading] = useState(true);
@@ -74,10 +73,15 @@ export default function RaffleDetail() {
     
     // Simular reserva/venda do número
     const updatedNumbers = raffle.numbers.map(n => 
-      n.number === number.number ? { ...n, status: 'reserved' } : n
+      n.number === number.number 
+        ? { ...n, status: 'reserved' as const } 
+        : n
     );
     
-    const updatedRaffle = { ...raffle, numbers: updatedNumbers };
+    const updatedRaffle: Raffle = { 
+      ...raffle, 
+      numbers: updatedNumbers 
+    };
     
     // Atualizar localStorage
     const storedRaffles = JSON.parse(localStorage.getItem('raffles') || '[]');
