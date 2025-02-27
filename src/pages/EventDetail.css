@@ -65,16 +65,26 @@
 .form-group label {
   color: #ffffff;
   font-weight: 500;
+  margin-bottom: 4px;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
   padding: 12px;
-  background-color: #2d2d2d;
-  border: 1px solid var(--border-color);
+  background-color: #333333;
+  border: 1px solid #444444;
   border-radius: 8px;
   color: #ffffff;
+  font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: #3d3d3d;
 }
 
 .form-group textarea {
@@ -198,15 +208,17 @@
 }
 
 .product-form {
-  background-color: #2d2d2d;
+  background-color: #1e1e1e;
   padding: 24px;
   border-radius: 12px;
   margin-bottom: 24px;
+  border: 1px solid #333333;
 }
 
 .product-form h3 {
   margin: 0 0 16px 0;
   color: #ffffff;
+  font-size: 18px;
 }
 
 .form-buttons {
@@ -247,4 +259,43 @@
   .add-product-button {
     width: 100%;
   }
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #666666;
+}
+
+.form-group input:disabled,
+.form-group textarea:disabled,
+.form-group select:disabled {
+  background-color: #2d2d2d;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.form-group input,
+.form-group textarea {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  transition: all 0.2s ease-in-out;
+}
+
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+  border-color: #555555;
 } 
