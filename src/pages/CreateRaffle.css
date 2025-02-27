@@ -1,0 +1,106 @@
+.create-raffle-container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.create-raffle-form {
+  width: 100%;
+}
+
+.raffle-form-card {
+  background-color: #1e1e1e;
+  border-radius: var(--border-radius);
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+.raffle-form-card h2 {
+  color: #dddddd;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #dddddd;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  background-color: #2d2d2d;
+  border: none;
+  border-radius: var(--border-radius);
+  color: #ffffff;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.button-primary {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 14px 24px;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.button-secondary {
+  background-color: #333333;
+  color: white;
+  padding: 14px 24px;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button-secondary:hover {
+  background-color: #444444;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+  }
+  
+  .button-primary,
+  .button-secondary {
+    width: 100%;
+  }
+} 

@@ -16,6 +16,11 @@ import RaffleDetail from './pages/RaffleDetail';
 import RaffleCheckout from './pages/RaffleCheckout';
 import './styles/shared.css';
 
+// Componentes temporários para as páginas que ainda não foram criadas
+const EventDetail = () => <div className="container"><h1>Detalhes do Evento</h1><p>Esta página está em desenvolvimento</p></div>;
+const CreateRaffle = () => <div className="container"><h1>Criar Rifa</h1><p>Esta página está em desenvolvimento</p></div>;
+const RaffleDetail = () => <div className="container"><h1>Detalhes da Rifa</h1><p>Esta página está em desenvolvimento</p></div>;
+
 function App() {
   return (
     <ThemeProvider>
