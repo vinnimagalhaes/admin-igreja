@@ -102,10 +102,12 @@ export default function EventsList() {
                 )}
               </div>
               <div className="event-card-content">
-                <h3>{event.title}</h3>
-                <p className="event-date">{formatEventDate(event.date)}</p>
-                <p className="event-location">{event.location}</p>
-                <p className="event-products">{event.products.length} produtos</p>
+                <div className="event-info">
+                  <h3>{event.title}</h3>
+                  <p className="event-date">{formatEventDate(event.date)}</p>
+                  <p className="event-location">{event.location}</p>
+                  <p className="event-products">{event.products.length} produtos</p>
+                </div>
                 <div className="event-card-footer">
                   <button 
                     className="button-secondary" 
