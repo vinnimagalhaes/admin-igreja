@@ -52,7 +52,6 @@
   overflow: hidden;
   border: none;
   transition: transform 0.2s;
-  height: 100%;
 }
 
 .event-card:hover {
@@ -62,9 +61,8 @@
 
 .event-card-image {
   width: 100%;
-  height: 180px;
+  height: 160px;
   overflow: hidden;
-  border-radius: 12px 12px 0 0;
 }
 
 .event-card-image img {
@@ -84,17 +82,16 @@
 }
 
 .event-card-content {
-  padding: 16px;
+  padding: 12px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-elevated);
 }
 
 .event-card-content h3 {
   color: var(--text-primary);
-  margin: 0 0 8px 0;
-  font-size: 1.25rem;
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -106,38 +103,39 @@
 .event-date {
   color: var(--accent-color);
   font-size: 0.875rem;
-  margin-bottom: 4px;
-  line-height: 1.25;
+  margin-bottom: 2px;
+  line-height: 1.2;
 }
 
 .event-location {
   color: var(--text-secondary);
   font-size: 0.875rem;
-  margin-bottom: 4px;
-  line-height: 1.25;
+  margin-bottom: 2px;
+  line-height: 1.2;
 }
 
 .event-products {
   color: var(--text-secondary);
   font-size: 0.875rem;
-  margin-bottom: 16px;
-  line-height: 1.25;
+  margin-bottom: 12px;
+  line-height: 1.2;
 }
 
 .event-card-footer {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: auto;
+  margin-top: 8px;
 }
 
 .event-card-footer .button-primary,
 .event-card-footer .button-secondary {
   width: 100%;
-  padding: 12px;
+  padding: 8px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.875rem;
+  border-radius: 8px;
 }
 
 .button-primary,
