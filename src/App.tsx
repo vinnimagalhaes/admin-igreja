@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { ThemeProvider } from './contexts/ThemeContext';
 
@@ -24,6 +24,9 @@ function App() {
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
+          {/* Redirecionar a rota raiz para o dashboard */}
+          <Route path="/" element={<Navigate to="/admin" replace />} />
+
           {/* Rota de Login */}
           <Route path="/login" element={<Login />} />
 
@@ -51,6 +54,9 @@ function App() {
               </Layout>
             } 
           />
+
+          {/* Rota para páginas não encontradas */}
+          <Route path="*" element={<Navigate to="/admin" replace />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
