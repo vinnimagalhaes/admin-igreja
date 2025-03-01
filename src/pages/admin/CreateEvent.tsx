@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './CreateEvent.css';
+import '../../styles/admin/CreateEvent.css';
 import { v4 as uuidv4 } from 'uuid';
 
 interface EventForm {
