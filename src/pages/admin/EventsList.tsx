@@ -64,7 +64,7 @@ export default function EventsList() {
       <div className="events-list-header">
         <h1>Meus Eventos</h1>
         <button
-          className="button-primary"
+          className="button"
           onClick={() => navigate('/admin/create-event')}
         >
           + Novo Evento
