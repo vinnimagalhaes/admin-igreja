@@ -14,23 +14,26 @@
 .events-list-header h1 {
   color: var(--text-primary);
   margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
 }
 
 .events-list-header .button-primary {
   width: 180px;
-  flex: none;
-  padding: 12px 24px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background-color: var(--accent-color);
   color: white;
   border: none;
-  border-radius: var(--border-radius);
-  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .events-list-header .button-primary:hover {
@@ -40,28 +43,29 @@
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(312px, 1fr));
   gap: 24px;
+  margin-top: 40px;
 }
 
 .event-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-elevated);
-  border-radius: 12px;
+  background: var(--bg-elevated);
+  border-radius: 16px;
   overflow: hidden;
   border: none;
-  transition: transform 0.2s;
+  transition: all 0.2s ease;
 }
 
 .event-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
 }
 
 .event-card-image {
   width: 100%;
-  height: 160px;
+  height: 176px;
   overflow: hidden;
 }
 
@@ -82,18 +86,18 @@
 }
 
 .event-card-content {
-  padding: 12px;
-  flex: 1;
+  padding: 16px;
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
 .event-card-content h3 {
   color: var(--text-primary);
-  margin: 0 0 4px 0;
-  font-size: 1.1rem;
+  font-size: 20px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 28px;
+  margin: 0;
 }
 
 .event-info {
@@ -102,70 +106,63 @@
 
 .event-date {
   color: var(--accent-color);
-  font-size: 0.875rem;
-  margin-bottom: 2px;
-  line-height: 1.2;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
 }
 
 .event-location {
   color: var(--text-secondary);
-  font-size: 0.875rem;
-  margin-bottom: 2px;
-  line-height: 1.2;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
 }
 
 .event-products {
   color: var(--text-secondary);
-  font-size: 0.875rem;
-  margin-bottom: 12px;
-  line-height: 1.2;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  margin-bottom: 16px;
 }
 
 .event-card-footer {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 8px;
 }
 
 .event-card-footer .button-primary,
 .event-card-footer .button-secondary {
   width: 100%;
-  padding: 8px;
-  text-align: center;
-  font-weight: 500;
-  font-size: 0.875rem;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
   border-radius: 8px;
-}
-
-.button-primary,
-.button-secondary {
-  padding: 8px 16px;
-  border-radius: var(--border-radius);
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 0.875rem;
+  transition: all 0.2s ease;
 }
 
 .button-primary {
-  background-color: var(--accent-color);
-  color: white;
+  background: var(--accent-color);
   border: none;
+  color: white;
 }
 
 .button-primary:hover {
-  background-color: var(--accent-hover);
+  background: var(--accent-hover);
 }
 
 .button-secondary {
-  background-color: var(--bg-elevated);
-  color: var(--text-primary);
+  background: transparent;
   border: 1px solid var(--border-color);
+  color: var(--text-primary);
 }
 
 .button-secondary:hover {
-  background-color: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .no-events {
