@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
-import '../../styles/public/EventView.css';
+import '../../styles/shared.css';
+import './EventView.css';
 
 export default function PublicEventView() {
   const { eventId } = useParams();

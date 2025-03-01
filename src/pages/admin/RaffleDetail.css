@@ -1,0 +1,103 @@
+.raffle-detail-container {
+  padding: 32px;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+.raffle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.raffle-header h1 {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.raffle-content {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 24px;
+}
+
+.raffle-image {
+  width: 100%;
+  height: 300px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.raffle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.raffle-info {
+  margin-bottom: 32px;
+}
+
+.raffle-meta {
+  display: flex;
+  gap: 24px;
+  color: var(--text-secondary);
+  margin: 16px 0;
+}
+
+.numbers-section {
+  margin-top: 32px;
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+}
+
+.number-card {
+  background-color: var(--bg-elevated);
+  border-radius: var(--border-radius);
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.number-card.available {
+  border: 2px solid var(--success-color);
+}
+
+.number-card.reserved {
+  border: 2px solid var(--warning-color);
+  background-color: var(--warning-color);
+  opacity: 0.1;
+}
+
+.number-card.sold {
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color);
+  opacity: 0.1;
+}
+
+@media (max-width: 768px) {
+  .raffle-detail-container {
+    padding: 16px;
+  }
+
+  .raffle-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .raffle-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .raffle-image {
+    height: 200px;
+  }
+} 

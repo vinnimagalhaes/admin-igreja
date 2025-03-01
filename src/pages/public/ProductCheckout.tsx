@@ -1,26 +1,11 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './ProductCheckout.css';
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  imageUrl: string;
-  description: string;
-  type: string;
-}
+import { Event, Product } from '../../types';
 
 interface CartItem {
   product: Product;
   quantity: number;
-}
-
-interface Event {
-  id: string;
-  title: string;
-  date: string;
-  location: string;
 }
 
 interface CheckoutForm {

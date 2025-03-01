@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import '../../styles/shared.css';
 import './EventsList.css';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';

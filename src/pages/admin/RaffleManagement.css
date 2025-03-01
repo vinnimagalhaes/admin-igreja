@@ -1,0 +1,93 @@
+.raffle-management-container {
+  padding: 32px;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+.raffle-management-header {
+  margin-bottom: 32px;
+}
+
+.raffle-management-header h1 {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.filters-section {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.search-input,
+.status-filter {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.search-input {
+  flex: 1;
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+}
+
+.number-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid var(--border-color);
+}
+
+.number-card.available {
+  border-color: var(--success-color);
+}
+
+.number-card.reserved {
+  border-color: var(--warning-color);
+  background-color: var(--warning-color);
+  opacity: 0.1;
+}
+
+.number-card.sold {
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  opacity: 0.1;
+}
+
+.number {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.buyer-name {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .raffle-management-container {
+    padding: 16px;
+  }
+
+  .filters-section {
+    flex-direction: column;
+  }
+
+  .numbers-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+} 

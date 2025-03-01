@@ -1,0 +1,103 @@
+.raffles-container {
+  padding: 32px;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+.raffles-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.raffles-header h1 {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.raffles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.raffle-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s;
+}
+
+.raffle-card:hover {
+  transform: translateY(-4px);
+}
+
+.raffle-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.raffle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.raffle-content {
+  padding: 16px;
+}
+
+.raffle-content h3 {
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.raffle-meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+}
+
+.raffle-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.raffle-button {
+  flex: 1;
+  padding: 8px;
+  border-radius: var(--border-radius);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.raffle-button.edit {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.raffle-button.view {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .raffles-container {
+    padding: 16px;
+  }
+
+  .raffles-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .raffle-actions {
+    flex-direction: column;
+  }
+} 

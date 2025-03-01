@@ -1,4 +1,5 @@
-import '../../styles/public/Checkout.css';
+import '../../styles/shared.css';
+import './Checkout.css';
 
 export default function Checkout() {
   return (
