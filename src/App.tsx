@@ -19,13 +19,24 @@ import Checkout from './pages/public/Checkout';
 import ProductCheckout from './pages/public/ProductCheckout';
 import Login from './pages/Login';
 
+// Componente para proteger rotas
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <>{children}</>;
+};
+
 function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
-          {/* Redirecionar a rota raiz para o dashboard */}
-          <Route path="/" element={<Navigate to="/admin" replace />} />
+          {/* Redirecionar a rota raiz para o login */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
 
           {/* Rota de Login */}
           <Route path="/login" element={<Login />} />
@@ -39,24 +50,28 @@ function App() {
           <Route 
             path="/admin/*" 
             element={
-              <Layout>
-                <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="events-list" element={<EventsList />} />
-                  <Route path="create-event" element={<CreateEvent />} />
-                  <Route path="events" element={<Events />} />
-                  <Route path="events/:id" element={<EventDetail />} />
-                  <Route path="raffles" element={<Raffles />} />
-                  <Route path="create-raffle" element={<CreateRaffle />} />
-                  <Route path="raffle-management" element={<RaffleManagement />} />
-                  <Route path="raffles/:id" element={<RaffleDetail />} />
-                </Routes>
-              </Layout>
+              <ProtectedRoute>
+                <Layout>
+                  <Routes>
+                    {/* Redirecionar /admin para /admin/dashboard */}
+                    <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="events-list" element={<EventsList />} />
+                    <Route path="create-event" element={<CreateEvent />} />
+                    <Route path="events" element={<Events />} />
+                    <Route path="events/:id" element={<EventDetail />} />
+                    <Route path="raffles" element={<Raffles />} />
+                    <Route path="create-raffle" element={<CreateRaffle />} />
+                    <Route path="raffle-management" element={<RaffleManagement />} />
+                    <Route path="raffles/:id" element={<RaffleDetail />} />
+                  </Routes>
+                </Layout>
+              </ProtectedRoute>
             } 
           />
 
           {/* Rota para páginas não encontradas */}
-          <Route path="*" element={<Navigate to="/admin" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

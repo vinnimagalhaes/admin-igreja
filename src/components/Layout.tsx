@@ -15,7 +15,7 @@ export function Layout({ children }: LayoutProps) {
   const menuItems = [
     { path: '/admin/dashboard', label: 'Dashboard', icon: '📊' },
     { path: '/admin/events-list', label: 'Meus Eventos', icon: '📅' },
-    { path: '/admin/raffles', label: 'Rifas', icon: '🎫' }
+    { path: '/admin/raffles', label: 'Rifas', icon: '🎫' },
   ];
 
   const toggleSidebar = () => {

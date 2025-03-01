@@ -18,9 +18,10 @@ export default function Login() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulação de login
+    // Lógica de autenticação aqui
+    localStorage.setItem('isAuthenticated', 'true');
     navigate('/admin/dashboard');
   };
 
@@ -33,7 +34,7 @@ export default function Login() {
           <p>Faça login para acessar o painel administrativo</p>
         </div>
         
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleLogin}>
           <div className="form-group">
             <label>Email</label>
             <input
