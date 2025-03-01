@@ -47,24 +47,26 @@
 
 .event-info {
   display: flex;
+  flex-direction: column;
   gap: 24px;
 }
 
 .event-image {
-  width: auto;
+  width: 100%;
   height: 200px;
   border-radius: 12px;
   overflow: hidden;
 }
 
 .event-image img {
-  width: auto;
+  width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .event-details {
   flex: 1;
+  padding: 0 16px;
 }
 
 .event-date,
@@ -76,6 +78,9 @@
 
 .products-section {
   margin-top: 32px;
+  background-color: var(--bg-elevated) !important;
+  border-radius: 16px;
+  padding: 24px;
 }
 
 .products-header {
@@ -85,6 +90,33 @@
   margin-bottom: 24px;
 }
 
+.products-header h2 {
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.add-product-button {
+  width: 160px;
+  height: 40px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-product-button:hover {
+  background: var(--accent-hover);
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -92,11 +124,12 @@
 }
 
 .product-card {
+  background-color: var(--bg-primary);
   display: flex;
   gap: 16px;
-  background: var(--bg-elevated);
   padding: 16px;
   border-radius: 12px;
+  border: 1px solid var(--border-color);
 }
 
 .product-image {
@@ -114,4 +147,39 @@
   display: flex;
   gap: 8px;
   margin-top: 16px;
+}
+
+.event-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.event-detail-header h1 {
+  color: var(--text-primary);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  margin: 0;
+}
+
+.edit-button {
+  width: 160px;
+  height: 40px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-button:hover {
+  background: var(--accent-hover);
 } 
