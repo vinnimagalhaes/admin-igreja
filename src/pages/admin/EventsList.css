@@ -18,6 +18,7 @@
 
 .events-list-header .button-primary {
   width: 180px;
+  flex: none;
   padding: 12px 24px;
   background-color: var(--accent-color);
   color: white;
@@ -46,10 +47,10 @@
 .event-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
+  background-color: var(--bg-elevated);
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid var(--border-color);
+  border: none;
   transition: transform 0.2s;
   height: 100%;
 }
@@ -61,9 +62,8 @@
 
 .event-card-image {
   width: 100%;
-  height: 200px;
+  height: 240px;
   overflow: hidden;
-  background-color: var(--bg-elevated);
 }
 
 .event-card-image img {
@@ -83,16 +83,18 @@
 }
 
 .event-card-content {
-  padding: 16px;
+  padding: 20px;
   flex: 1;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-elevated);
 }
 
 .event-card-content h3 {
   color: var(--text-primary);
-  margin: 0 0 8px 0;
-  font-size: 1.25rem;
+  margin: 0 0 12px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .event-info {
@@ -101,40 +103,40 @@
 
 .event-date {
   color: var(--accent-color);
-  font-size: 0.875rem;
-  margin-bottom: 4px;
+  font-size: 1rem;
+  margin-bottom: 8px;
 }
 
 .event-location {
   color: var(--text-secondary);
   font-size: 0.875rem;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .event-products {
   color: var(--text-secondary);
   font-size: 0.875rem;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .event-card-footer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 12px;
+  margin-top: auto;
 }
 
 .event-card-footer .button-primary,
 .event-card-footer .button-secondary {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   text-align: center;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 .button-primary,
 .button-secondary {
-  flex: 1;
   padding: 8px 16px;
   border-radius: var(--border-radius);
   font-weight: 500;
