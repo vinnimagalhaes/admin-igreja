@@ -84,9 +84,8 @@
 }
 
 .event-card-content {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
+  padding: inherit;
+  display: flow;
   gap: 8px;
 }
 
