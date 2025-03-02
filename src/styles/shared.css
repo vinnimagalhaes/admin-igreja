@@ -55,7 +55,7 @@ p {
 .card {
   background-color: #1e1e1e;
   border-radius: var(--border-radius);
-  padding: 16px;
+  padding: inherit;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
 }
