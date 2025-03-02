@@ -4,7 +4,7 @@
   --bg-secondary: #1e1e1e;
   --bg-elevated: #1e1e1e;
   --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
+  --text-secondary: #ffffff;
   
   /* Elementos de UI */
   --card-bg: #1e1e1e;
@@ -15,7 +15,7 @@
   /* Cores de Ação (iFood vermelho) */
   --accent-color: #22c55e;
   --accent-hover: #16a34a;
-  --accent-light: rgba(234, 29, 44, 0.2);
+  --accent-light: rgba(234, 29, 43, 0.134);
   
   /* Status */
   --error-color: #ef4444;
@@ -60,7 +60,7 @@
   --bg-secondary: #1e1e1e;
   --bg-elevated: #242424;
   --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
+  --text-secondary: #ffffff;
   
   /* Elementos de UI */
   --card-bg: #242424;

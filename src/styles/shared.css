@@ -9,7 +9,7 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.5;
+  line-height: 1.25;
   font-size: 16px;
   font-family: Helvetica, Arial, sans-serif;
 }
@@ -35,7 +35,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #dddddd;
   margin-bottom: 24px;
 }
@@ -48,14 +48,14 @@ h3 {
 
 p {
   color: #94a3b8;
-  line-height: 1.6;
+  line-height: 1.25;
 }
 
 /* Cards */
 .card {
   background-color: #1e1e1e;
   border-radius: var(--border-radius);
-  padding: 24px;
+  padding: 16px;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
 }
