@@ -32,11 +32,16 @@ function Dashboard() {
   };
 
   const calculateTotalValue = () => {
-    return events.reduce((total, event) => {
-      return total + event.products.reduce((eventTotal, product) => {
-        return eventTotal + (product.price * product.maxQuantity);
-      }, 0);
-    }, 0);
+    let total = 0;
+    events.forEach(event => {
+      event.products.forEach(product => {
+        // Garantir que os valores são números válidos
+        const price = typeof product.price === 'number' ? product.price : parseFloat(product.price) || 0;
+        const quantity = typeof product.maxQuantity === 'number' ? product.maxQuantity : parseFloat(product.maxQuantity) || 0;
+        total += price * quantity;
+      });
+    });
+    return total;
   };
 
   const getUpcomingEvents = () => {
@@ -71,7 +76,12 @@ function Dashboard() {
           <div className="stat-icon">💰</div>
           <div className="stat-info">
             <h3>Valor Total em Produtos</h3>
-            <p className="stat-value">R$ {calculateTotalValue().toFixed(2)}</p>
+            <p className="stat-value">
+              R$ {calculateTotalValue().toLocaleString('pt-BR', { 
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2 
+              })}
+            </p>
           </div>
         </div>
       </div>
@@ -96,9 +106,15 @@ function Dashboard() {
                   <div className="event-stat">
                     <span>Valor Total:</span>
                     <span>
-                      R$ {event.products.reduce((total, product) => 
-                        total + (product.price * product.maxQuantity), 0
-                      ).toFixed(2)}
+                      {(() => {
+                        let eventTotal = 0;
+                        event.products.forEach(product => {
+                          const price = typeof product.price === 'number' ? product.price : parseFloat(product.price) || 0;
+                          const quantity = typeof product.maxQuantity === 'number' ? product.maxQuantity : parseFloat(product.maxQuantity) || 0;
+                          eventTotal += price * quantity;
+                        });
+                        return `R$ ${eventTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+                      })()}
                     </span>
                   </div>
                 </div>

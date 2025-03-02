@@ -13,7 +13,6 @@ export function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   const menuItems = [
-    { path: '/admin/dashboard', label: 'Dashboard', icon: '📊' },
     { path: '/admin/events-list', label: 'Meus Eventos', icon: '📅' },
     { path: '/admin/raffles', label: 'Rifas', icon: '🎫' },
   ];

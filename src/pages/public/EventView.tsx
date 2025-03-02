@@ -17,14 +17,15 @@ export default function PublicEventView() {
         <div className="event-cover">
           <img src={event.imageUrl} alt={event.title} />
         </div>
-        <div className="event-info">
-          <h1>{event.title}</h1>
-          <p className="event-date">{event.date}</p>
-          <p className="event-location">{event.location}</p>
-          <p className="event-description">{event.description}</p>
-        </div>
       </div>
-      
+
+      <div className="event-info">
+        <h1>{event.title}</h1>
+        <p className="event-date">{event.date}</p>
+        <p className="event-location">{event.location}</p>
+        <p className="event-description">{event.description}</p>
+      </div>
+
       <div className="products-section">
         <h2>Produtos Disponíveis</h2>
         <div className="products-grid">

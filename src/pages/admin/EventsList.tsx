@@ -93,25 +93,19 @@ export default function EventsList() {
           {events.map((event) => (
             <div key={event.id} className="event-card">
               <div className="event-card-image">
-                {event.imageUrl ? (
-                  <img src={event.imageUrl} alt={event.title} />
-                ) : (
-                  <div className="event-placeholder">
-                    <span>Sem imagem</span>
-                  </div>
-                )}
+                <img src={event.imageUrl} alt={event.title} />
               </div>
               <div className="event-card-content">
                 <div className="event-info">
                   <h3>{event.title}</h3>
                   <p className="event-date">{formatEventDate(event.date)}</p>
                   <p className="event-location">{event.location}</p>
-                  <p className="event-products">{event.products.length} produtos</p>
+                  <span className="event-products">{event.products.length} produtos</span>
                 </div>
                 <div className="event-card-footer">
                   <button 
                     className="button-secondary" 
-                    onClick={() => navigate(`/events/${event.id}`)}
+                    onClick={() => navigate(`/event/${event.id}`)}
                   >
                     Ver evento
                   </button>

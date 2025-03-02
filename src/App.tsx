@@ -7,7 +7,6 @@ import CreateEvent from './pages/admin/CreateEvent';
 import Events from './pages/admin/Events';
 import EventsList from './pages/admin/EventsList';
 import EventDetail from './pages/admin/EventDetail';
-import Dashboard from './pages/Dashboard';
 import RaffleManagement from './pages/RaffleManagement';
 import RaffleDetail from './pages/RaffleDetail';
 import Raffles from './pages/Raffles';
@@ -53,9 +52,8 @@ function App() {
               <ProtectedRoute>
                 <Layout>
                   <Routes>
-                    {/* Redirecionar /admin para /admin/dashboard */}
-                    <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
-                    <Route path="dashboard" element={<Dashboard />} />
+                    {/* Redirecionar /admin para /admin/events-list */}
+                    <Route path="/" element={<Navigate to="/admin/events-list" replace />} />
                     <Route path="events-list" element={<EventsList />} />
                     <Route path="create-event" element={<CreateEvent />} />
                     <Route path="events" element={<Events />} />
