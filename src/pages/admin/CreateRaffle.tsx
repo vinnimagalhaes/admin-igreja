@@ -1,11 +1,11 @@
 import React from 'react';
 import '../../styles/shared.css';
-import './Raffles.css';
+import './CreateRaffle.css';
 
-export default function Raffles() {
+export default function CreateRaffle() {
   return (
     <div>
-      <h1>Lista de Rifas</h1>
+      <h1>Criar Nova Rifa</h1>
     </div>
   );
 } 
