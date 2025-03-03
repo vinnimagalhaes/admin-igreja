@@ -1,4 +1,4 @@
-import '../../styles/shared.css';
+import '../../../styles/shared.css';
 import './RaffleDetail.css';
 
 export default function RaffleDetail() {

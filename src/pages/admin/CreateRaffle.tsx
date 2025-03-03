@@ -1,4 +1,4 @@
-import '../../styles/shared.css';
+import '../../../styles/shared.css';
 import './CreateRaffle.css';
 
 export default function CreateRaffle() {
