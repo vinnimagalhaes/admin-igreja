@@ -1,1 +1,11 @@
 /* Estilos para o componente RaffleManagement */
+.raffle-management-container {
+  padding: 32px;
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+.raffle-management-container h1 {
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}

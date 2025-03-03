@@ -1,11 +1,10 @@
-/* Estilos para o componente Raffles */
-.raffles-container {
+.create-raffle-container {
   padding: 32px;
   max-width: 1136px;
   margin: 0 auto;
 }
 
-.raffles-container h1 {
+.create-raffle-container h1 {
   color: var(--text-primary);
   margin-bottom: 24px;
-}
+} 

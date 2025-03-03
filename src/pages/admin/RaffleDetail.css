@@ -4,6 +4,11 @@
   margin: 0 auto;
 }
 
+.raffle-detail-container h1 {
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
 .raffle-header {
   display: flex;
   justify-content: space-between;
