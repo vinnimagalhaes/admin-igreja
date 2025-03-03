@@ -8,21 +8,23 @@
 }
 
 .login-card {
-  background-color: var(--bg-elevated);
+  background-color: var(--bg-secondary);
   padding: 32px;
   border-radius: var(--border-radius);
   width: 100%;
   max-width: 400px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .login-header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .login-header h1 {
   color: var(--text-primary);
+  font-size: 28px;
+  font-weight: 600;
   margin: 0;
 }
 
@@ -32,13 +34,12 @@
   gap: 24px;
 }
 
-.public-access-button {
+.public-access-button,
+.admin-button {
   width: 100%;
-  padding: 12px;
-  background-color: #3b82f6;
-  color: white;
+  padding: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -49,23 +50,39 @@
   gap: 8px;
 }
 
+.public-access-button {
+  background-color: var(--accent-color);
+  color: white;
+}
+
 .public-access-button:hover {
-  background-color: #2563eb;
+  background-color: var(--accent-hover);
   transform: translateY(-2px);
+}
+
+.admin-button {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.admin-button:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--accent-color);
 }
 
 .divider {
   display: flex;
   align-items: center;
   text-align: center;
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .divider::before,
 .divider::after {
   content: '';
   flex: 1;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .divider span {
@@ -73,10 +90,10 @@
 }
 
 form h2 {
-  margin: 0 0 24px 0;
-  color: #1f2937;
+  color: var(--text-primary);
   font-size: 20px;
   text-align: center;
+  margin-bottom: 24px;
 }
 
 .form-group {
@@ -87,21 +104,43 @@ form h2 {
   display: block;
   margin-bottom: 8px;
   color: var(--text-secondary);
+  font-size: 14px;
 }
 
 .form-group input {
   width: 100%;
   padding: 12px;
-  border: 1px solid var(--input-border);
-  border-radius: 8px;
-  background-color: var(--input-bg);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
   color: var(--text-primary);
+  font-size: 16px;
+  transition: all 0.2s;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #22c55e;
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--accent-light);
+}
+
+.login-button {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 24px;
+}
+
+.login-button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
 }
 
 .error-message {
@@ -109,23 +148,6 @@ form h2 {
   margin-bottom: 16px;
   font-size: 14px;
   text-align: center;
-}
-
-.login-button {
-  width: 100%;
-  padding: 18px;
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  border-radius: var(--border-radius);
-  font-size: var(--font-size-menu);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.login-button:hover {
-  background-color: var(--accent-hover);
 }
 
 .forgot-password {
